@@ -1,0 +1,73 @@
+---
+title: 'Datadog'
+description: 'Add Calmo to your Slack workspace and let it help you investigate and run root cause analysis'
+---
+
+# Connecting Datadog to Calmo
+
+Calmo integrates with Datadog to help you monitor, investigate, and analyze your observability data directly from your Slack workspace. This guide will walk you through the process of connecting your Datadog account to Calmo.
+
+## Prerequisites
+
+- A Datadog account with admin access
+- A Calmo account
+
+## Generating Datadog API and Application Keys
+
+To connect Datadog to Calmo, you'll need to generate both an API key and an Application key in Datadog. Follow these steps:
+
+1. Log in to your [Datadog account](https://app.datadoghq.com)
+2. Navigate to **Organization Settings** by clicking on your profile icon in the bottom left corner
+3. Select **API Keys** from the left sidebar under "Access"
+4. Click the **+ New Key** button to create a new API key
+5. Provide a descriptive name for your API key (e.g., "Calmo Integration")
+6. Copy the generated API key immediately (you won't be able to see it again)
+7. Next, navigate to **Application Keys** in the left sidebar
+8. Click the **+ New Key** button to create a new Application key
+9. Provide a descriptive name for your Application key (e.g., "Calmo Integration")
+10. Copy the generated Application key immediately (you won't be able to see it again)
+
+## Data Synced from Datadog to Calmo
+
+When you connect Datadog to Calmo, the integration fetches the following data:
+
+1. **Metrics** - Performance and operational metrics from your infrastructure and applications
+2. **Monitors** - Alert configurations and statuses for your monitored services
+3. **Events** - System events, deployments, and other significant occurrences
+4. **Dashboards** - Information about your custom dashboards and visualizations
+5. **Service Level Objectives (SLOs)** - SLO configurations and current status
+
+This data enables Calmo to provide comprehensive monitoring and analysis capabilities directly within your Slack workspace, without requiring you to switch contexts to the Datadog dashboard.
+
+## Connecting Datadog to Calmo
+
+Once you have generated your Datadog API and Application keys, follow these steps to connect them to Calmo:
+
+1. Log in to your Calmo dashboard
+2. Navigate to **Integrations** in the main menu
+3. Find the Datadog integration card and click **Connect**
+4. Enter the following information:
+   - **API Key**: Paste the API key you generated in the previous steps
+   - **Application Key**: Paste the Application key you generated in the previous steps
+   - **Start Date** (optional): Specify a date from which to begin syncing data
+5. Click **Connect to Datadog**
+6. Verify the connection by checking that Datadog metrics and monitors are now visible in Calmo
+
+## Verifying the Integration
+
+After connecting Datadog to Calmo, you can verify that the integration is working properly:
+
+1. In Slack, use the Calmo command to query a Datadog monitor or metric
+2. Calmo should be able to fetch and display information about the requested data
+3. You can now use Calmo to investigate and analyze Datadog metrics and alerts directly from Slack
+
+## Troubleshooting
+
+If you encounter issues with the Datadog integration:
+
+- Ensure your API and Application keys have the correct permissions
+- Verify that your keys haven't expired or been revoked
+- Check that the services you're trying to monitor are accessible with the provided keys
+- Make sure your start date (if specified) is in the correct format
+
+For additional help, contact Calmo support through the dashboard or via email at support@calmo.io.

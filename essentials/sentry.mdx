@@ -1,0 +1,75 @@
+---
+title: 'Sentry'
+description: 'Add Calmo to your Slack workspace and let it help you investigate and run root cause analysis'
+---
+
+# Connecting Sentry to Calmo
+
+Calmo integrates with Sentry to help you investigate issues and perform root cause analysis directly from your Slack workspace. This guide will walk you through the process of connecting your Sentry account to Calmo.
+
+## Prerequisites
+
+- A Sentry account with admin access
+- A Calmo account
+
+## Generating a Sentry Auth Token
+
+To connect Sentry to Calmo, you'll need to generate an authentication token in Sentry. Follow these steps:
+
+1. Log in to your [Sentry account](https://sentry.io)
+2. Navigate to **Settings** by clicking on your profile icon in the bottom left corner
+3. Select **Auth Tokens** from the left sidebar under "Organization"
+4. Click the **Create New Token** button
+5. Provide a descriptive name for your token (e.g., "Calmo Integration")
+6. Select the appropriate scopes for the token:
+   - `project:read`
+   - `event:read`
+   - `org:read`
+   - `member:read`
+   - `team:read`
+7. Click **Create Token**
+8. Copy the generated token immediately (you won't be able to see it again)
+
+## Data Synced from Sentry to Calmo
+
+When you connect Sentry to Calmo, the integration fetches the following data:
+
+1. **Projects** - Information about all your Sentry projects, including project IDs, names, and configurations
+2. **Issues** - Error issues from each project, including stack traces, error messages, and issue metadata
+3. **Events** - Detailed event data from each project, providing granular information about each error occurrence
+4. **Teams** - Team information from your organization, helping to associate issues with responsible teams
+5. **Users** - User information from your organization, allowing for proper attribution and notification
+
+This data enables Calmo to provide comprehensive error analysis and investigation capabilities directly within your Slack workspace, without requiring you to switch contexts to the Sentry dashboard.
+
+## Connecting Sentry to Calmo
+
+Once you have generated your Sentry auth token, follow these steps to connect it to Calmo:
+
+1. Log in to your Calmo dashboard
+2. Navigate to **Integrations** in the main menu
+3. Find the Sentry integration card and click **Connect**
+4. Enter the following information:
+   - **Sentry Organization Slug**: Your Sentry organization name (found in the URL when you're in Sentry)
+   - **Auth Token**: Paste the authentication token you generated in the previous step
+5. Click **Connect to Sentry**
+6. Verify the connection by checking that Sentry projects are now visible in Calmo
+
+## Verifying the Integration
+
+After connecting Sentry to Calmo, you can verify that the integration is working properly:
+
+1. In Slack, use the Calmo command to query a recent Sentry issue
+2. Calmo should be able to fetch and display information about the issue
+3. You can now use Calmo to investigate and analyze Sentry issues directly from Slack
+
+## Troubleshooting
+
+If you encounter issues with the Sentry integration:
+
+- Ensure your auth token has the correct permissions
+- Verify that your Sentry organization slug is correct
+- Check that your Sentry auth token hasn't expired
+- Make sure your Sentry projects are accessible with the provided token
+
+For additional help, contact Calmo support through the dashboard or via email at support@calmo.io.

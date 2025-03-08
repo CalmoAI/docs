@@ -1,0 +1,70 @@
+---
+title: 'Pagerduty'
+description: 'Add Calmo to your Slack workspace and let it help you investigate and run root cause analysis'
+---
+
+# Connecting PagerDuty to Calmo
+
+Calmo integrates with PagerDuty to help you manage incidents, investigate alerts, and run root cause analysis directly from your Slack workspace. This guide will walk you through the process of connecting your PagerDuty account to Calmo.
+
+## Prerequisites
+
+- A PagerDuty account with admin access
+- A Calmo account
+
+## Generating a PagerDuty API Token
+
+To connect PagerDuty to Calmo, you'll need to generate a REST API key. Follow these steps:
+
+1. Log in to your [PagerDuty account](https://app.pagerduty.com)
+2. Navigate to **Configuration** → **API Access**
+3. Click the **Create New API Key** button
+4. Provide a descriptive name for your API key (e.g., "Calmo Integration")
+5. Select the appropriate role for the API key (Admin access is recommended for full functionality)
+6. Click **Create Key**
+7. Copy the generated API key immediately (you won't be able to see it again)
+
+## Data Synced from PagerDuty to Calmo
+
+When you connect PagerDuty to Calmo, the integration fetches the following data:
+
+1. **Incidents** - Current and historical incident data including status, severity, and assignments
+2. **Services** - Information about your monitored services and their configurations
+3. **Escalation Policies** - Details about how incidents are escalated within your organization
+4. **On-call Schedules** - Information about who is currently on-call and upcoming rotations
+5. **Users** - User information for team members involved in incident response
+
+This data enables Calmo to provide comprehensive incident management and analysis capabilities directly within your Slack workspace, without requiring you to switch contexts to the PagerDuty dashboard.
+
+## Connecting PagerDuty to Calmo
+
+Once you have generated your PagerDuty API key, follow these steps to connect it to Calmo:
+
+1. Log in to your Calmo dashboard
+2. Navigate to **Integrations** in the main menu
+3. Find the PagerDuty integration card and click **Connect**
+4. Enter the following information:
+   - **API Token**: Paste the API key you generated in the previous steps
+   - **Email**: Enter a valid email address associated with your PagerDuty account
+   - **Since** (optional): Specify a date from which to begin syncing data
+5. Click **Connect to PagerDuty**
+6. Verify the connection by checking that PagerDuty incidents and services are now visible in Calmo
+
+## Verifying the Integration
+
+After connecting PagerDuty to Calmo, you can verify that the integration is working properly:
+
+1. In Slack, use the Calmo command to query a PagerDuty incident or service
+2. Calmo should be able to fetch and display information about the requested data
+3. You can now use Calmo to investigate incidents and run root cause analysis directly from Slack
+
+## Troubleshooting
+
+If you encounter issues with the PagerDuty integration:
+
+- Ensure your API key has the correct permissions
+- Verify that your key hasn't expired or been revoked
+- Check that the email address provided is associated with your PagerDuty account
+- Make sure your since date (if specified) is in the correct format
+
+For additional help, contact Calmo support through the dashboard or via email at support@calmo.io.
