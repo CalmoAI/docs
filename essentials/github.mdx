@@ -1,0 +1,53 @@
+---
+title: 'Github'
+description: 'Add Calmo to your Slack workspace and let it help you investigate and run root cause analysis'
+icon: 'github'
+---
+
+# Connecting GitHub to Calmo
+
+Calmo integrates with GitHub to help you track repository activities, investigate code issues, and perform root cause analysis directly from your Slack workspace. This guide will walk you through the process of connecting your GitHub account to Calmo.
+
+## Prerequisites
+
+- A GitHub account with access to your repositories
+- A Calmo account
+
+## Generating a GitHub Personal Access Token (PAT)
+
+To connect GitHub to Calmo, you'll need to generate a Personal Access Token (PAT) with read-only permissions. Follow these steps:
+
+1. Log in to your [GitHub account](https://github.com)
+2. Navigate to **Settings** by clicking on your profile icon in the top right corner
+3. Scroll down to the **Developer settings** section in the left sidebar
+4. Select **Personal access tokens** and then **Tokens (classic)**
+5. Click the **Generate new token** button and select **Generate new token (classic)**
+6. Provide a descriptive name for your token (e.g., "Calmo Integration")
+7. Set an expiration date according to your organization's security policies
+8. Select the following read-only permissions:
+   - `repo:status` - Access commit status
+   - `repo_deployment` - Access deployment status
+   - `public_repo` - Access public repositories
+   - `repo:read` - Read access to code
+   - `read:org` - Read organization data
+9. Click **Generate token**
+10. Copy the generated token immediately (you won't be able to see it again)
+
+## Data Synced from GitHub to Calmo
+
+When you connect GitHub to Calmo, the integration fetches the following data:
+
+1. **Repositories** - Information about your repositories, including names, descriptions, and metadata
+2. **Pull Requests** - Status and details of open and recently closed pull requests
+3. **Issues** - Open and recently closed issues from your repositories
+4. **Commits** - Recent commit history and changes
+5. **Deployments** - Information about recent deployments and their status
+
+This data enables Calmo to provide comprehensive code analysis and investigation capabilities directly within your Slack workspace, without requiring you to switch contexts to the GitHub interface.
+
+## Connecting GitHub to Calmo
+
+The connection to GitHub is handled during the onboarding process. The Calmo team ensures that the integration is seamless and properly configured for your environment. No specific data preparation is needed, and the entire integration process typically takes only a few minutes to complete.
+
+
+For additional help, contact Calmo support through the dashboard or via email at support@getcalmo.com.
