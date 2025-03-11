@@ -65,8 +65,9 @@
     }
   },
   "logo": {
-    "light": "/logo/calmo-logo.png",
-    "dark": "/logo/calmo-logo.png"
+    "light": "/logo/calmo.svg",
+    "dark": "/logo/calmo-night.svg",
+    "href": "https://getcalmo.com"
   },
   "navbar": {
     "links": [
