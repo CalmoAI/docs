@@ -1,38 +1,239 @@
 ---
 title: 'Slack'
-description: 'Add Calmo to your Slack workspace and let it help you investigate and run root cause analysis'
+description: 'Connect Calmo to your Slack workspace for comprehensive team communication and collaboration through AI assistance'
 icon: 'slack'
 ---
 
-# Calmo for Slack
+# Slack Integration
 
-Integrate Calmo with your Slack workspace to transform how your team handles production incidents and alerts.
+Integrate Calmo with your Slack workspace to transform how your team handles production incidents, alerts, and collaborative troubleshooting. This integration provides access to **8 specialized tools** across **4 categories** for complete team communication workflows.
 
-## Engineer-Level Debugging in Your Slack Channels
+## Overview & Value Proposition
 
-Calmo brings the expertise of a senior engineer directly into your Slack channels. When integrated with your Slack workspace, Calmo can:
+The Slack integration transforms how your team handles incidents and collaboration by providing:
 
-- **Debug production issues** with the same approach and thoroughness as your best engineers
-- **Automatically respond to alerts** in real-time as they occur
-- **Provide comprehensive Root Cause Analysis (RCA)** in less than 1 minute
-- **Reduce alert fatigue** by handling routine investigations autonomously
+- **Engineer-Level Debugging** - AI brings senior engineer expertise directly into your Slack channels
+- **Real-Time Incident Response** - Automatic alert analysis and comprehensive RCA in under 60 seconds
+- **Intelligent Communication** - Context-aware messaging, channel management, and user interaction
+- **Seamless Workflow Integration** - Native Slack tools for channel discovery, message history, and thread management
+- **Reduced Alert Fatigue** - Automated routine investigations with human escalation when needed
+- **Knowledge Preservation** - Historical context maintenance across incidents for pattern recognition
 
-## How It Works
+## Key Capabilities
 
-1. **Connect Calmo to your Slack workspace** through our simple integration process
-2. **Invite @Calmo** to relevant channels where you want monitoring and debugging support
-3. **Receive instant analysis** when alerts trigger or when you mention @Calmo with an issue
-4. **Get detailed RCA reports** complete with affected systems, timeline, and recommended actions
+When connected, Calmo gains access to **8 Slack tools** across **4 categories**:
 
-## Benefits
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Channel Management** | 1 tool | Discover and manage workspace channels |
+| **Messaging** | 3 tools | Send messages, reply to threads, add reactions |
+| **Data Retrieval** | 2 tools | Access channel history and thread conversations |
+| **User Management** | 2 tools | Identify users and access profile information |
 
-- **Immediate Response**: No more waiting for on-call engineers to investigate alerts
-- **Consistent Analysis**: Every alert receives the same thorough investigation, regardless of time of day
-- **Reduced MTTR**: With RCA delivered in under 60 seconds, your team can move directly to resolution
-- **Knowledge Sharing**: Calmo's analysis helps junior team members learn troubleshooting approaches
-- **Historical Context**: Calmo maintains context across incidents for better pattern recognition
+## Prerequisites
 
-## Contact Us
+- Slack workspace with admin permissions for app installation
+- Appropriate workspace permissions for target channels
+- Calmo account with team or personal workspace
 
-For assistance with setting up Calmo in your Slack workspace, please contact us at support@getcalmo.com.
+## Setup Process
+
+### Step 1: OAuth Connection (Recommended)
+
+**Quick and secure workspace integration**
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Slack** integration
+3. Choose **Connect with Slack**
+4. Review and customize tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+5. Click **Add to Slack**
+6. Authorize Calmo in Slack OAuth flow
+7. Select channels to grant access (optional)
+
+### Step 2: Channel Configuration
+
+**After connection, configure channel access:**
+
+1. **Invite @Calmo** to relevant channels where you want AI assistance
+2. **Set channel preferences** for automated responses vs manual triggers
+3. **Configure notification settings** for different alert types
+4. **Test integration** with a simple mention: `@Calmo help`
+
+## Tool Categories & Configuration
+
+### 📋 Channel Management (Safe)
+**Default: Enabled** - Essential for workspace navigation
+
+- **slack_list_channels** - Discover available channels and their metadata
+
+*Use Cases: Channel discovery, workspace organization, access management, bot deployment planning*
+
+### 💬 Messaging (Write Operations)
+**Default: Disabled** - Direct communication capabilities
+
+- **slack_post_message** - Send messages to channels (⚠️ Write operation)
+- **slack_reply_to_thread** - Reply to existing message threads (⚠️ Write operation)
+- **slack_add_reaction** - Add emoji reactions to messages (⚠️ Write operation)
+
+*Use Cases: Automated incident updates, RCA delivery, alert acknowledgments, status communication*
+
+### 📚 Data Retrieval (Safe)
+**Default: Enabled** - Historical context and conversation access
+
+- **slack_get_channel_history** - Retrieve channel message history with filtering
+- **slack_get_thread_replies** - Access complete thread conversations
+
+*Use Cases: Incident timeline reconstruction, context gathering, troubleshooting history, pattern analysis*
+
+### 👥 User Management (Safe)
+**Default: Enabled** - Team member identification and interaction
+
+- **slack_get_users** - List workspace members and their information
+- **slack_get_user_profile** - Access detailed user profiles and contact information
+
+*Use Cases: Team identification, escalation routing, expertise location, contact management*
+
+## Integration Workflows
+
+### Automated Incident Response
+
+**Real-Time Alert Analysis:**
+1. **Alert Detection** - Calmo monitors configured channels for alerts
+2. **Immediate Analysis** - Comprehensive investigation begins automatically
+3. **RCA Delivery** - Detailed root cause analysis delivered in under 60 seconds
+4. **Thread Management** - Organized discussion threads for incident resolution
+5. **Status Updates** - Automated status communication to stakeholders
+
+### Manual Investigation Support
+
+**On-Demand Assistance:**
+1. **@Calmo Mention** - Trigger AI analysis with direct mentions
+2. **Context Gathering** - Automatic channel history and thread analysis
+3. **Expert Investigation** - Senior engineer-level debugging approach
+4. **Collaborative Resolution** - Interactive problem-solving with team members
+
+### Knowledge Management
+
+**Continuous Learning:**
+- **Pattern Recognition** - Identify recurring issues across incidents
+- **Historical Analysis** - Learn from past incident responses
+- **Team Training** - Educational insights for junior team members
+- **Documentation** - Automatic incident documentation and knowledge base updates
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Organization-wide Slack workspace integration
+- Shared channel access and monitoring configurations
+- Team-level escalation policies and notification settings
+- Administrators control messaging and response permissions
+
+### Personal Setup
+- Individual workspace connections (for multiple workspaces)
+- Personal channel preferences and notification settings
+- Private direct message capabilities with Calmo
+- Individual tool access and permission controls
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-First Approach** - Begin with read-only tools, add messaging capabilities gradually
+2. **Channel Scope** - Invite Calmo only to relevant channels initially
+3. **Permission Auditing** - Regularly review channel access and tool permissions
+4. **Response Policies** - Establish clear guidelines for automated vs manual responses
+5. **Escalation Procedures** - Define when to escalate from AI to human intervention
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | List channels, read history, get user info | ✅ Safe to enable |
+| **Medium** | Add reactions, reply to threads | ⚠️ Enable with review |
+| **High** | Post messages to channels | ⚠️ Enable only when necessary |
+
+## Advanced Features
+
+### Intelligent Channel Monitoring
+- **Multi-Channel Support** - Monitor multiple channels simultaneously
+- **Context Switching** - Maintain separate conversation contexts per channel
+- **Alert Correlation** - Cross-reference alerts across different channels
+- **Priority Detection** - Automatic identification of high-priority incidents
+
+### Real-Time Collaboration
+- **Thread Organization** - Structured incident response threads
+- **Expert Summoning** - Intelligent escalation to relevant team members
+- **Status Broadcasting** - Automated status updates to stakeholder channels
+- **Resolution Tracking** - Follow incident resolution to closure
+
+### Workspace Integration
+- **Bot User Management** - Comprehensive bot user identity and permissions
+- **Custom Emoji Support** - Leverage workspace-specific emoji for reactions
+- **Channel Archival** - Access to archived channel history when needed
+- **Cross-Workspace Support** - Multiple workspace connections for large organizations
+
+## Configuration Management
+
+### Updating Slack Integration
+
+1. Navigate to **Integrations** → **Slack**
+2. Click **Edit Configuration**
+3. Modify tool permissions and channel access
+4. Update notification preferences and response settings
+5. Test changes with low-risk operations
+6. Save configuration changes
+
+### Managing Channel Access
+
+- **Add Channels** - Invite @Calmo to additional channels as needed
+- **Remove Access** - Remove Calmo from channels when no longer needed
+- **Permission Review** - Regular audits of channel access and capabilities
+- **Workspace Policies** - Align with organization Slack governance policies
+
+## Troubleshooting
+
+### Common Issues
+
+**Bot Not Responding**
+- Verify @Calmo is invited to the channel
+- Check that messaging tools are enabled in integration settings
+- Ensure proper workspace permissions for the bot user
+
+**Missing Channel History**
+- Confirm Calmo was invited before the messages you're trying to access
+- Check that data retrieval tools are enabled
+- Verify channel permissions allow history access
+
+**Permission Denied**
+- Review Slack workspace app permissions
+- Check individual channel permissions for the bot user
+- Ensure OAuth scopes include required permissions
+
+### Getting Help
+
+1. **Test Commands** - Use `@Calmo help` to verify basic functionality
+2. **Reconnect Integration** - Use reconnection flow to refresh permissions
+3. **Contact Support** - Reach out to support@getcalmo.com for assistance
+
+## Best Practices for Teams
+
+### Incident Response Setup
+1. **Dedicated Channels** - Create specific channels for incident response
+2. **Clear Escalation** - Define when to escalate from AI to human experts
+3. **Documentation Standards** - Establish consistent incident documentation
+4. **Training Programs** - Regular team training on AI-assisted workflows
+
+### Operational Excellence
+- **Monitor AI Performance** - Track response quality and accuracy
+- **Feedback Loops** - Provide feedback to improve AI responses
+- **Process Optimization** - Continuously improve incident response workflows
+- **Knowledge Sharing** - Leverage AI insights for team learning
+
+The Slack integration provides comprehensive incident response and team collaboration capabilities, enabling your team to handle production issues efficiently through AI-powered assistance while maintaining human oversight and control.
+
+---
+
+*For assistance with setting up Calmo in your Slack workspace, contact our support team at support@getcalmo.com.*
 

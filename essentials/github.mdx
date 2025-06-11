@@ -1,53 +1,283 @@
 ---
-title: 'Github'
-description: 'Add Calmo to your codebase and let it help you investigate and run root cause analysis'
+title: 'GitHub'
+description: 'Connect Calmo to your GitHub repositories for comprehensive code analysis, repository management, and collaboration through AI assistance'
 icon: 'github'
 ---
 
-# Connecting GitHub to Calmo
+# GitHub Integration
 
-Calmo integrates with GitHub to help you track repository activities, investigate code issues, and perform root cause analysis directly from your Slack workspace. This guide will walk you through the process of connecting your GitHub account to Calmo.
+Connect Calmo to your GitHub repositories to enable comprehensive code analysis, repository management, and collaboration through AI assistance. This integration provides access to **26 specialized tools** across **7 categories** for complete development workflow automation.
+
+## Overview & Value Proposition
+
+The GitHub integration transforms how your team manages code and collaboration by providing:
+
+- **Intelligent Code Analysis** - AI-powered code review, issue investigation, and repository insights
+- **Automated Repository Management** - Create, fork, and manage repositories through conversational AI
+- **Advanced Pull Request Workflows** - Comprehensive PR analysis, review automation, and merge management
+- **Issue Tracking & Resolution** - Automated issue creation, updates, and intelligent problem diagnosis
+- **Repository Discovery** - Powerful search across code, repositories, issues, and users
+- **Safe Operation Modes** - Read-only tools enabled by default with granular write permission control
+
+## Key Capabilities
+
+When connected, Calmo gains access to **26 GitHub tools** across **7 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Code Reading** | 1 tool | AI reads and analyzes your codebase |
+| **Code Management** | 2 tools | Edit files and push code changes |
+| **Repository Operations** | 2 tools | Create and fork repositories |
+| **Branch Management** | 2 tools | Create branches and view commit history |
+| **Pull Requests** | 9 tools | Complete PR lifecycle management |
+| **Issue Management** | 6 tools | Full issue tracking and collaboration |
+| **Search & Discovery** | 4 tools | Advanced search across GitHub ecosystem |
 
 ## Prerequisites
 
-- A GitHub account with access to your repositories
-- A Calmo account
+- GitHub account with repository access
+- Appropriate permissions for target repositories
+- Calmo account with team or personal workspace
 
-## Generating a GitHub Personal Access Token (PAT)
+## Setup Methods
 
-To connect GitHub to Calmo, you'll need to generate a Personal Access Token (PAT) with read-only permissions. Follow these steps:
+### Method 1: OAuth Authentication (Recommended)
 
-1. Log in to your [GitHub account](https://github.com)
-2. Navigate to **Settings** by clicking on your profile icon in the top right corner
-3. Scroll down to the **Developer settings** section in the left sidebar
-4. Select **Personal access tokens** and then **Tokens (classic)**
-5. Click the **Generate new token** button and select **Generate new token (classic)**
-6. Provide a descriptive name for your token (e.g., "Calmo Integration")
-7. Set an expiration date according to your organization's security policies
-8. Select the following read-only permissions:
-   - `repo:status` - Access commit status
-   - `repo_deployment` - Access deployment status
-   - `public_repo` - Access public repositories
-   - `repo:read` - Read access to code
-   - `read:org` - Read organization data
-9. Click **Generate token**
-10. Copy the generated token immediately (you won't be able to see it again)
+**Quick and secure connection with automatic permission management**
 
-## Data Synced from GitHub to Calmo
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **GitHub** integration
+3. Choose **Connect with OAuth**
+4. Review and customize tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+5. Click **Connect with GitHub**
+6. Authorize Calmo in GitHub OAuth flow
+7. Select repositories to grant access
 
-When you connect GitHub to Calmo, the integration fetches the following data:
+**OAuth Benefits:**
+- Automatic token management and renewal
+- Granular repository permissions
+- Enhanced security with scope-limited access
+- No manual token generation required
 
-1. **Repositories** - Information about your repositories, including names, descriptions, and metadata
-2. **Pull Requests** - Status and details of open and recently closed pull requests
-3. **Issues** - Open and recently closed issues from your repositories
-4. **Commits** - Recent commit history and changes
-5. **Deployments** - Information about recent deployments and their status
+### Method 2: Personal Access Token (Advanced)
 
-This data enables Calmo to provide comprehensive code analysis and investigation capabilities directly within your Slack workspace, without requiring you to switch contexts to the GitHub interface.
+**For custom workflows and enhanced control**
 
-## Connecting GitHub to Calmo
+**Step 1: Generate GitHub PAT**
 
-The connection to GitHub is handled during the onboarding process. The Calmo team ensures that the integration is seamless and properly configured for your environment. No specific data preparation is needed, and the entire integration process typically takes only a few minutes to complete.
+1. Go to GitHub **Settings** → **Developer settings** → **Personal access tokens**
+2. Click **Generate new token (classic)**
+3. Configure token settings:
+   - **Name**: "Calmo Integration"
+   - **Expiration**: Set according to security policies
+   - **Scopes**: Select based on desired capabilities
 
+**Required Scopes by Tool Category:**
 
-For additional help, contact Calmo support through the dashboard or via email at support@getcalmo.com.
+| Tool Category | Required Scopes |
+|---------------|----------------|
+| **Code Reading** | `repo` (for private repos) or `public_repo` |
+| **Code Management** | `repo` (full repository access) |
+| **Repository Operations** | `repo`, `delete_repo` (if deletion needed) |
+| **Pull Requests** | `repo`, `pull_requests` |
+| **Issues** | `repo`, `issues` |
+| **Search** | `repo` (for private), `read:org`, `read:user` |
+
+4. Generate and copy token immediately
+
+**Step 2: Connect to Calmo**
+
+1. Choose **Connect with Personal Access Token**
+2. Paste your GitHub token
+3. Enter target repository name
+4. Configure tool permissions
+5. Complete connection
+
+## Tool Categories & Configuration
+
+### 📖 Code Reading (Safe)
+**Default: Enabled** - Essential for AI code analysis
+
+- **github_get_file_contents** - Read and analyze code files
+
+*Use Cases: Code review, bug investigation, architecture analysis, documentation generation*
+
+### ✏️ Code Management (Write Operations)
+**Default: Disabled** - Direct code modification capabilities
+
+- **github_create_or_update_file** - Create or modify files (⚠️ Write operation)
+- **github_push_files** - Push multiple file changes (⚠️ Write operation)
+
+*Use Cases: Automated code fixes, documentation updates, configuration changes*
+
+### 🏗️ Repository Operations (Write Operations)
+**Default: Disabled** - Repository lifecycle management
+
+- **github_create_repository** - Create new repositories (⚠️ Write operation)
+- **github_fork_repository** - Fork existing repositories (⚠️ Write operation)
+
+*Use Cases: Project initialization, repository duplication, development environment setup*
+
+### 🌿 Branch Management (Mixed Safety)
+**Default: Read-only enabled** - Branch and commit operations
+
+- **github_create_branch** - Create new branches (⚠️ Write operation)
+- **github_list_commits** - View commit history (✅ Read-only)
+
+*Use Cases: Feature development, commit analysis, branch strategy management*
+
+### 🔄 Pull Request Management (Mixed Safety)
+**Default: Read operations enabled** - Comprehensive PR workflow
+
+**Read Operations (✅ Enabled by default):**
+- **github_get_pull_request** - Get PR details and metadata
+- **github_list_pull_requests** - List PRs with filters
+- **github_get_pull_request_files** - View PR file changes
+- **github_get_pull_request_status** - Check CI/CD status
+- **github_get_pull_request_comments** - Read PR discussions
+- **github_get_pull_request_reviews** - View code reviews
+
+**Write Operations (⚠️ Disabled by default):**
+- **github_create_pull_request** - Create new pull requests
+- **github_merge_pull_request** - Merge approved PRs
+- **github_create_pull_request_review** - Submit code reviews
+- **github_update_pull_request_branch** - Update PR branches
+
+*Use Cases: Code review automation, PR analysis, merge management, CI/CD integration*
+
+### 🐛 Issue Management (Mixed Safety)
+**Default: Read operations enabled** - Complete issue lifecycle
+
+**Read Operations (✅ Enabled by default):**
+- **github_get_issue** - Get issue details and metadata
+- **github_list_issues** - List issues with advanced filters
+
+**Write Operations (⚠️ Disabled by default):**
+- **github_create_issue** - Create new issues
+- **github_update_issue** - Modify issue details
+- **github_add_issue_comment** - Add comments to issues
+
+*Use Cases: Bug tracking, feature requests, project management, automated issue triaging*
+
+### 🔍 Search & Discovery (Safe)
+**Default: Enabled** - Advanced search capabilities
+
+- **github_search_code** - Search code across repositories
+- **github_search_repositories** - Find repositories by criteria
+- **github_search_issues** - Search issues and PRs
+- **github_search_users** - Find GitHub users and organizations
+
+*Use Cases: Code discovery, repository exploration, contributor identification, issue research*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared repository access across team members
+- Organization-level tool policies and permissions
+- Centralized repository and branch management
+- Team administrators control write operation access
+
+### Personal Setup
+- Individual repository connections
+- Personal tool preferences and configurations
+- Private repository access
+- Full control over enabled capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Start Read-Only** - Begin with read operations, add write access gradually
+2. **Repository Scope** - Connect only necessary repositories
+3. **Regular Token Rotation** - Update PATs according to security policies
+4. **Permission Auditing** - Regularly review enabled tools and repository access
+5. **OAuth Preferred** - Use OAuth for automatic token management when possible
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | Read files, list PRs/issues, search | ✅ Safe to enable |
+| **Medium** | Create issues/PRs, add comments | ⚠️ Enable with review |
+| **High** | Push code, merge PRs, create repos | ❌ Enable only when necessary |
+
+## Configuration Management
+
+### Updating GitHub Connection
+
+1. Navigate to **Integrations** → **GitHub**
+2. Click **Edit Configuration**
+3. Update authentication method (OAuth/PAT)
+4. Modify repository access or generate new tokens
+5. Adjust tool permissions based on team needs
+6. Save configuration changes
+
+### Managing Repository Access
+
+- **OAuth**: Modify permissions through GitHub app settings
+- **PAT**: Update token scopes and regenerate if needed
+- **Multi-Repository**: Configure access per repository
+- **Organization Integration**: Set up organization-wide policies
+
+## Advanced Features
+
+### Repository Selection Flow
+- Choose specific repositories during OAuth setup
+- Filter by organization, visibility, and activity
+- Configure per-repository tool permissions
+- Support for private and public repository access
+
+### Multi-Repository Management
+- Connect multiple repositories with different permission levels
+- Maintain separate configurations per repository
+- Cross-repository search and analysis capabilities
+- Unified issue and PR management across repositories
+
+### Integration Workflows
+- **Code Review Automation** - AI-powered PR analysis and suggestions
+- **Issue Intelligence** - Automated issue categorization and assignment
+- **Repository Insights** - Code quality analysis and technical debt detection
+- **Development Acceleration** - Automated code generation and documentation
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify GitHub token has required scopes
+- Check token expiration date
+- Ensure repository access permissions are granted
+
+**Permission Denied**
+- Review GitHub token scopes match enabled tools
+- Verify repository access in GitHub settings
+- Check organization/team permissions
+
+**API Rate Limits**
+- GitHub enforces API rate limits (5,000 requests/hour)
+- OAuth apps have higher limits than PATs
+- Contact support if limits are consistently exceeded
+
+### Getting Help
+
+1. **Reconnect Integration** - Use reconnection flow to refresh authentication
+2. **Update Permissions** - Modify GitHub token scopes or OAuth permissions
+3. **Contact Support** - Reach out to support@getcalmo.com for assistance
+
+## Migration from Legacy Setup
+
+If you previously connected GitHub through basic PAT setup:
+
+1. Navigate to GitHub integration settings
+2. Choose **Upgrade to OAuth** for enhanced security
+3. Or update to new PAT with comprehensive scopes
+4. Configure new tool permissions
+5. Test functionality with read-only operations first
+
+The GitHub integration provides comprehensive development workflow automation, enabling your team to manage code, issues, and collaboration efficiently through AI-powered assistance while maintaining strict security controls.
+
+---
+
+*For additional help with GitHub integration, contact our support team at support@getcalmo.com.*

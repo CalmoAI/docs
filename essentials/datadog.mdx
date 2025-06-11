@@ -1,47 +1,271 @@
 ---
 title: 'Datadog'
-description: 'Add Calmo to Datadog and let it help you investigate and run root cause analysis'
+description: 'Connect Calmo to Datadog for comprehensive observability, monitoring, and performance analysis through AI assistance'
 icon: 'datadog'
 ---
 
-# Connecting Datadog to Calmo
+# Datadog Integration
 
-Calmo integrates with Datadog to help you monitor, investigate, and analyze your observability data directly from your Slack workspace. This guide will walk you through the process of connecting your Datadog account to Calmo.
+Connect Calmo to your Datadog account to enable comprehensive observability, monitoring, and performance analysis through AI assistance. This integration provides access to **22 specialized tools** across **5 categories** for complete monitoring and observability workflows.
+
+## Overview & Value Proposition
+
+The Datadog integration transforms how your team handles observability and monitoring by providing:
+
+- **Intelligent Monitoring** - AI-powered analysis of metrics, logs, and traces with automatic anomaly detection
+- **Comprehensive Observability** - Full-stack monitoring from infrastructure to application performance
+- **Advanced Analytics** - Real User Monitoring (RUM) insights and performance bottleneck identification
+- **Incident Response** - Rapid investigation and correlation across monitoring signals
+- **Infrastructure Management** - Host monitoring, downtime scheduling, and capacity planning
+- **Safe Operations** - Read-only tools enabled by default with controlled write access
+
+## Key Capabilities
+
+When connected, Calmo gains access to **22 Datadog tools** across **5 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Monitoring & Metrics** | 4 tools | Query metrics, dashboards, and monitors |
+| **Logs & Traces** | 4 tools | Access logs, traces, and service information |
+| **Infrastructure** | 4 tools | Host management and infrastructure monitoring |
+| **Incidents** | 2 tools | Incident tracking and management |
+| **Real User Monitoring** | 5 tools | RUM applications, events, and performance analysis |
+| **Downtimes** | 3 tools | Downtime scheduling and management |
 
 ## Prerequisites
 
-- A Datadog account with admin access
-- A Calmo account
+- Datadog account with appropriate access permissions
+- Admin access to generate API and Application keys
+- Calmo account with team or personal workspace
 
-## Generating Datadog API and Application Keys
+## Setup Process
 
-To connect Datadog to Calmo, you'll need to generate both an API key and an Application key in Datadog. Follow these steps:
+### Step 1: Generate Datadog Credentials
 
+**Create API Key:**
 1. Log in to your [Datadog account](https://app.datadoghq.com)
-2. Navigate to **Organization Settings** by clicking on your profile icon in the bottom left corner
-3. Select **API Keys** from the left sidebar under "Access"
-4. Click the **+ New Key** button to create a new API key
-5. Provide a descriptive name for your API key (e.g., "Calmo Integration")
-6. Copy the generated API key immediately (you won't be able to see it again)
-7. Next, navigate to **Application Keys** in the left sidebar
-8. Click the **+ New Key** button to create a new Application key
-9. Provide a descriptive name for your Application key (e.g., "Calmo Integration")
-10. Copy the generated Application key immediately (you won't be able to see it again)
+2. Navigate to **Organization Settings** → **API Keys**
+3. Click **+ New Key**
+4. Name: "Calmo Integration API Key"
+5. Copy the generated API key immediately
 
-## Data Synced from Datadog to Calmo
+**Create Application Key:**
+1. Navigate to **Organization Settings** → **Application Keys**
+2. Click **+ New Key**
+3. Name: "Calmo Integration App Key"
+4. Copy the generated Application key immediately
 
-When you connect Datadog to Calmo, the integration fetches the following data:
+### Step 2: Configure Site Selection
 
-1. **Metrics** - Performance and operational metrics from your infrastructure and applications
-2. **Monitors** - Alert configurations and statuses for your monitored services
-3. **Events** - System events, deployments, and other significant occurrences
-4. **Dashboards** - Information about your custom dashboards and visualizations
-5. **Service Level Objectives (SLOs)** - SLO configurations and current status
+Choose your Datadog site based on your account location:
 
-This data enables Calmo to provide comprehensive monitoring and analysis capabilities directly within your Slack workspace, without requiring you to switch contexts to the Datadog dashboard.
+| Site | URL | Region |
+|------|-----|--------|
+| **US1** | datadoghq.com | United States (default) |
+| **EU1** | datadoghq.eu | Europe |
+| **US3** | us3.datadoghq.com | United States (West) |
+| **US5** | us5.datadoghq.com | United States (Gov) |
+| **AP1** | ap1.datadoghq.com | Asia Pacific |
+| **Gov** | ddog-gov.com | US Government |
 
-## Connecting Datadog to Calmo
-The connection to Datadog is handled during the onboarding process. The Calmo team ensures that the integration is seamless and properly configured for your environment. No specific data preparation is needed, and the entire integration process typically takes only a few minutes to complete.
+### Step 3: Connect to Calmo
 
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Datadog** integration
+3. Enter your **API Key** and **Application Key**
+4. Select your **Datadog Site** from the dropdown
+5. Configure tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+6. Complete the connection
 
-For additional help, contact Calmo support through the dashboard or via email at support@getcalmo.com.
+## Tool Categories & Configuration
+
+### 📊 Monitoring & Metrics (Safe)
+**Default: Enabled** - Essential for observability analysis
+
+- **query_metrics** - Query and analyze metric data with filters and aggregations
+- **list_dashboards** - List available dashboards and their metadata
+- **get_dashboard** - Retrieve specific dashboard configurations and widgets
+- **get_monitors** - Access monitor configurations, statuses, and alert history
+
+*Use Cases: Performance analysis, trend identification, alert investigation, dashboard insights*
+
+### 📋 Logs & Traces (Safe)  
+**Default: Enabled** - Critical for debugging and troubleshooting
+
+- **get_logs** - Search and retrieve log data with advanced filtering
+- **get_all_services** - List all services reporting to Datadog APM
+- **list_traces** - Query distributed traces for performance analysis
+
+*Use Cases: Error investigation, performance debugging, service dependency analysis, log correlation*
+
+### 🖥️ Infrastructure (Mixed Safety)
+**Default: Read operations enabled** - Host and infrastructure monitoring
+
+**Read Operations (✅ Enabled by default):**
+- **list_hosts** - List all hosts and their metadata
+- **get_active_hosts_count** - Get count of active hosts
+
+**Write Operations (⚠️ Disabled by default):**
+- **mute_host** - Mute alerts for specific hosts
+- **unmute_host** - Unmute previously muted hosts
+
+*Use Cases: Infrastructure inventory, capacity planning, host health monitoring, maintenance windows*
+
+### 🚨 Incidents (Safe)
+**Default: Enabled** - Incident tracking and response
+
+- **list_incidents** - List incidents with status and metadata
+- **get_incident** - Get detailed incident information and timeline
+
+*Use Cases: Incident response, post-mortem analysis, incident correlation, status tracking*
+
+### 📱 Real User Monitoring (Safe)
+**Default: Enabled** - Frontend performance and user experience
+
+- **get_rum_applications** - List RUM applications and their configurations
+- **get_rum_events** - Query RUM events with filtering capabilities
+- **get_rum_grouped_event_count** - Get aggregated event counts and statistics
+- **get_rum_page_performance** - Analyze page load performance metrics
+- **get_rum_page_waterfall** - Get detailed page load waterfall analysis
+
+*Use Cases: Frontend performance optimization, user experience analysis, page load debugging, conversion funnel analysis*
+
+### ⏰ Downtimes (Write Operations)
+**Default: Read-only enabled** - Maintenance window management
+
+**Read Operations (✅ Enabled by default):**
+- **list_downtimes** - List scheduled and active downtimes
+
+**Write Operations (⚠️ Disabled by default):**
+- **schedule_downtime** - Schedule maintenance windows
+- **cancel_downtime** - Cancel scheduled downtimes
+
+*Use Cases: Maintenance planning, alert suppression, downtime coordination*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared Datadog account access across team members
+- Organization-level monitoring policies and dashboards
+- Centralized incident response and escalation procedures
+- Team administrators control write operation permissions
+
+### Personal Setup
+- Individual Datadog account connections
+- Personal dashboard and monitoring preferences
+- Private metric queries and analysis
+- Full control over enabled tool capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-First Approach** - Begin with read-only tools, add write access gradually
+2. **Key Rotation** - Regularly rotate API and Application keys
+3. **Scope Limitation** - Use least-privilege access for integration keys
+4. **Monitoring Integration** - Monitor the integration's own usage through Datadog
+5. **Site Verification** - Ensure correct Datadog site selection to avoid data issues
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | Query metrics, view dashboards, read logs | ✅ Safe to enable |
+| **Medium** | List infrastructure, read incidents | ✅ Generally safe |
+| **High** | Mute hosts, schedule downtimes | ⚠️ Enable with caution |
+
+## Configuration Management
+
+### Updating Datadog Connection
+
+1. Navigate to **Integrations** → **Datadog**
+2. Click **Edit Configuration**
+3. Update API keys, Application keys, or site selection
+4. Modify tool permissions based on team requirements
+5. Test connection with read-only operations
+6. Save configuration changes
+
+### Managing Multiple Environments
+
+- Connect separate Datadog accounts for different environments
+- Use different API keys for production vs staging
+- Configure environment-specific tool permissions
+- Maintain separate monitoring policies per environment
+
+## Advanced Features
+
+### Multi-Site Support
+The integration supports all Datadog sites globally:
+- **Geographic Distribution** - Connect to the site closest to your data
+- **Compliance Requirements** - Meet data residency requirements
+- **Performance Optimization** - Reduce latency with regional sites
+
+### Advanced Query Capabilities
+- **Metric Aggregation** - Complex queries with multiple aggregation functions
+- **Log Analytics** - Advanced log searching with Datadog's query language
+- **Trace Analysis** - Distributed tracing across microservices
+- **Custom Dashboards** - Integration with existing dashboard configurations
+
+### Real-Time Monitoring
+- **Live Metrics** - Real-time metric streaming and analysis
+- **Alert Correlation** - Cross-reference alerts with system events
+- **Performance Insights** - Automated performance bottleneck detection
+- **Anomaly Detection** - AI-powered anomaly identification
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify API and Application keys are correct and active
+- Check that keys haven't expired or been revoked
+- Ensure proper permissions are assigned to the keys
+
+**Wrong Site Selected**
+- Verify Datadog site matches your account region
+- Check URLs and endpoints match your Datadog instance
+- Update site selection in integration settings
+
+**Permission Denied**
+- Review API key permissions in Datadog organization settings
+- Ensure Application key has required scopes
+- Check organization-level access restrictions
+
+**Rate Limiting**
+- Datadog enforces API rate limits (varies by endpoint)
+- Monitor API usage in Datadog organization settings
+- Contact support if limits are consistently exceeded
+
+### Getting Help
+
+1. **Test Connection** - Use the connection test feature in integration settings
+2. **Update Credentials** - Regenerate API and Application keys if needed
+3. **Contact Support** - Reach out to support@getcalmo.com for assistance
+
+## Data Types & Analysis
+
+### Metrics Analysis
+- **Infrastructure Metrics** - CPU, memory, disk, network utilization
+- **Application Metrics** - Request rates, error rates, response times
+- **Custom Metrics** - Business-specific KPIs and measurements
+- **Synthetic Monitoring** - Uptime and performance of critical services
+
+### Log Investigation
+- **Application Logs** - Error tracking and debugging information
+- **Infrastructure Logs** - System events and security logs
+- **Audit Logs** - User activity and configuration changes
+- **Custom Log Sources** - Integration with third-party logging systems
+
+### Performance Monitoring
+- **APM Traces** - Distributed tracing across services and databases
+- **Database Performance** - Query performance and database health
+- **RUM Analytics** - Real user experience and frontend performance
+- **Network Monitoring** - Network performance and connectivity issues
+
+The Datadog integration provides comprehensive observability capabilities, enabling your team to monitor, analyze, and optimize system performance efficiently through AI-powered assistance while maintaining strict operational controls.
+
+---
+
+*For additional help with Datadog integration, contact our support team at support@getcalmo.com.*

@@ -1,51 +1,276 @@
 ---
 title: 'Sentry'
-description: 'Add Calmo to Sentry workspace and let it help you investigate and run root cause analysis'
+description: 'Connect Calmo to Sentry for comprehensive error monitoring, issue tracking, and performance analysis through AI assistance'
 icon: 'sentry'
 ---
 
-# Connecting Sentry to Calmo
+# Sentry Integration
 
-Calmo integrates with Sentry to help you investigate issues and perform root cause analysis directly from your Slack workspace. This guide will walk you through the process of connecting your Sentry account to Calmo.
+Connect Calmo to your Sentry account to enable comprehensive error monitoring, issue tracking, and performance analysis through AI assistance. This integration provides access to **11 specialized tools** across **4 categories** for complete error management workflows.
+
+## Overview & Value Proposition
+
+The Sentry integration transforms how your team handles error monitoring and issue resolution by providing:
+
+- **Intelligent Error Analysis** - AI-powered investigation of errors, stack traces, and performance issues
+- **Automated Issue Tracking** - Comprehensive issue management with context-aware categorization
+- **Session Replay Integration** - Visual debugging with user session recordings
+- **Performance Monitoring** - Detailed performance insights and bottleneck identification
+- **Proactive Error Management** - Automated error detection and intelligent resolution suggestions
+- **Safe Operations** - Read-only tools enabled by default with controlled project creation access
+
+## Key Capabilities
+
+When connected, Calmo gains access to **11 Sentry tools** across **4 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Project Management** | 2 tools | List projects and create new ones |
+| **Issue Tracking** | 4 tools | Comprehensive issue investigation and management |
+| **Error Monitoring** | 3 tools | Event analysis and error searching |
+| **Session Replay** | 1 tool | Visual debugging with user session recordings |
+| **Configuration** | 1 tool | Advanced Sentry setup and configuration |
 
 ## Prerequisites
 
-- A Sentry account with admin access
-- A Calmo account
+- Sentry account with appropriate access permissions
+- Admin or member access to target organizations and projects
+- Calmo account with team or personal workspace
 
-## Generating a Sentry Auth Token
+## Setup Process
 
-To connect Sentry to Calmo, you'll need to generate an authentication token in Sentry. Follow these steps:
+### Step 1: Generate Sentry Auth Token
 
+**Create Organization Token:**
 1. Log in to your [Sentry account](https://sentry.io)
-2. Navigate to **Settings** by clicking on your profile icon in the bottom left corner
-3. Select **Auth Tokens** from the left sidebar under "Organization"
-4. Click the **Create New Token** button
-5. Provide a descriptive name for your token (e.g., "Calmo Integration")
-6. Select the appropriate scopes for the token:
-   - `project:read`
-   - `event:read`
-   - `org:read`
-   - `member:read`
-   - `team:read`
-7. Click **Create Token**
-8. Copy the generated token immediately (you won't be able to see it again)
+2. Navigate to **Settings** → **Auth Tokens** (under Organization)
+3. Click **Create New Token**
+4. Configure token settings:
+   - **Name**: "Calmo Integration"
+   - **Scopes**: Select based on desired capabilities
 
-## Data Synced from Sentry to Calmo
+**Required Scopes by Tool Category:**
 
-When you connect Sentry to Calmo, the integration fetches the following data:
+| Tool Category | Required Scopes |
+|---------------|----------------|
+| **Project Management** | `project:read`, `project:write` (for creation) |
+| **Issue Tracking** | `event:read`, `event:write` (for updates) |
+| **Error Monitoring** | `event:read`, `org:read` |
+| **Session Replay** | `org:read`, `project:read` |
+| **Configuration** | `org:read`, `project:write` |
 
-1. **Projects** - Information about all your Sentry projects, including project IDs, names, and configurations
-2. **Issues** - Error issues from each project, including stack traces, error messages, and issue metadata
-3. **Events** - Detailed event data from each project, providing granular information about each error occurrence
-4. **Teams** - Team information from your organization, helping to associate issues with responsible teams
-5. **Users** - User information from your organization, allowing for proper attribution and notification
+**Recommended Minimal Scopes:**
+- `project:read` - Essential for project access
+- `event:read` - Core for error and issue investigation
+- `org:read` - Required for organization-level operations
+- `member:read` - Helpful for team context
+- `team:read` - Useful for team assignment features
 
-This data enables Calmo to provide comprehensive error analysis and investigation capabilities directly within your Slack workspace, without requiring you to switch contexts to the Sentry dashboard.
+5. Click **Create Token**
+6. Copy the generated token immediately
 
-## Connecting Sentry to Calmo
+### Step 2: Configure Organization and Project
 
-The connection to Sentry is handled during the onboarding process. The Calmo team ensures that the integration is seamless and properly configured for your environment. No specific data preparation is needed, and the entire integration process typically takes only a few minutes to complete.
+**Identify Target Configuration:**
+- **Organization**: Your Sentry organization slug
+- **Project**: Primary project slug for initial connection
+- **Additional Projects**: Can be configured after initial setup
 
+### Step 3: Connect to Calmo
 
-For additional help, contact Calmo support through the dashboard or via email at support@getcalmo.com.
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Sentry** integration
+3. Enter your **Auth Token**
+4. Specify **Organization** name/slug
+5. Enter primary **Project** name/slug
+6. Configure tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+7. Complete the connection
+
+## Tool Categories & Configuration
+
+### 🏗️ Project Management (Mixed Safety)
+**Default: Read-only enabled** - Project visibility and creation
+
+**Read Operations (✅ Enabled by default):**
+- **list_projects** - List all projects with metadata and configuration details
+
+**Write Operations (⚠️ Disabled by default):**
+- **create_project** - Create new Sentry projects with custom configurations
+
+*Use Cases: Project discovery, team organization, development environment setup, project lifecycle management*
+
+### 🐛 Issue Tracking (Mixed Safety)
+**Default: Read operations enabled** - Comprehensive issue investigation
+
+**Read Operations (✅ Enabled by default):**
+- **list_project_issues** - List issues with filtering, sorting, and pagination
+- **get_sentry_issue** - Get detailed issue information including stack traces
+- **list_issue_events** - List all events associated with specific issues
+- **resolve_short_id** - Convert Sentry short IDs to full issue references
+
+*Use Cases: Error investigation, issue triage, stack trace analysis, error correlation, debugging workflows*
+
+### 🔍 Error Monitoring (Safe)
+**Default: Enabled** - Event analysis and error investigation
+
+- **get_sentry_event** - Retrieve detailed event information and context
+- **list_error_events_in_project** - List error events with advanced filtering
+- **search_errors_in_file** - Search for errors in specific files or code paths
+
+*Use Cases: Error pattern analysis, performance debugging, code-specific error tracking, trend identification*
+
+### 🎬 Session Replay (Safe)
+**Default: Enabled** - Visual debugging and user experience analysis
+
+- **list_organization_replays** - List available session replay recordings
+
+*Use Cases: Visual debugging, user experience analysis, error reproduction, user journey investigation*
+
+### ⚙️ Setup & Configuration (Write Operations)
+**Default: Disabled** - Advanced Sentry configuration
+
+- **setup_sentry** - Configure Sentry projects and advanced settings
+
+*Use Cases: Initial project setup, configuration management, integration customization*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared access to organization projects and issues
+- Team-level error assignment and escalation workflows
+- Centralized error monitoring policies and alerting
+- Organization administrators control project creation permissions
+
+### Personal Setup
+- Individual developer error tracking and investigation
+- Personal project access and issue assignment
+- Private error analysis and debugging sessions
+- Full control over enabled tool capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-First Approach** - Begin with read-only operations, add write access as needed
+2. **Scope Limitation** - Use minimal required scopes for auth tokens
+3. **Token Rotation** - Regularly rotate auth tokens according to security policies
+4. **Project Isolation** - Connect only necessary projects initially
+5. **Team Permissions** - Leverage Sentry's built-in team and permission system
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | List projects, read issues/events, view replays | ✅ Safe to enable |
+| **Medium** | Search errors, resolve short IDs | ✅ Generally safe |
+| **High** | Create projects, setup configuration | ⚠️ Enable with caution |
+
+## Configuration Management
+
+### Updating Sentry Connection
+
+1. Navigate to **Integrations** → **Sentry**
+2. Click **Edit Configuration**
+3. Update auth token, organization, or project settings
+4. Modify tool permissions based on team requirements
+5. Test connection with read-only operations
+6. Save configuration changes
+
+### Managing Multiple Projects
+
+- Configure access to multiple Sentry projects
+- Set up project-specific tool permissions
+- Maintain separate error tracking workflows per project
+- Cross-project error correlation and analysis
+
+## Advanced Features
+
+### Multi-Project Support
+- **Project Discovery** - Automatically discover available projects
+- **Cross-Project Analysis** - Correlate errors across multiple projects
+- **Project-Specific Configuration** - Different tool permissions per project
+- **Unified Error Management** - Centralized view of errors across projects
+
+### Issue Intelligence
+- **Error Pattern Recognition** - AI-powered identification of error patterns
+- **Stack Trace Analysis** - Automated analysis of complex stack traces
+- **Issue Correlation** - Link related issues across different events
+- **Performance Impact Assessment** - Understand error impact on application performance
+
+### Session Replay Integration
+- **Visual Error Reproduction** - See exactly what users experienced
+- **User Journey Analysis** - Understand error context within user workflows
+- **Performance Debugging** - Visual identification of performance bottlenecks
+- **Error Context Enhancement** - Rich context for error investigation
+
+## Error Analysis Workflows
+
+### Automated Error Investigation
+- **Error Categorization** - Automatic classification of error types
+- **Root Cause Analysis** - AI-powered investigation of error sources
+- **Fix Suggestions** - Intelligent recommendations for error resolution
+- **Impact Assessment** - Understanding of error severity and user impact
+
+### Performance Monitoring
+- **Transaction Analysis** - Detailed performance trace investigation
+- **Performance Regression Detection** - Identification of performance degradations
+- **Database Query Analysis** - SQL query performance and optimization insights
+- **Frontend Performance** - Browser-specific performance issue identification
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify auth token is correct and hasn't expired
+- Check token scopes match enabled tool requirements
+- Ensure organization and project names are accurate
+
+**Project Not Found**
+- Verify project slug is correct (case-sensitive)
+- Check project exists and is accessible with current token
+- Ensure proper team membership for private projects
+
+**Permission Denied**
+- Review auth token scopes in Sentry organization settings
+- Check team permissions for target projects
+- Verify organization-level access rights
+
+**Rate Limiting**
+- Sentry enforces API rate limits (varies by plan)
+- Monitor API usage in Sentry organization settings
+- Consider upgrading Sentry plan for higher limits
+
+### Getting Help
+
+1. **Test Connection** - Use connection test feature in integration settings
+2. **Update Token** - Regenerate auth token with appropriate scopes
+3. **Contact Support** - Reach out to support@getcalmo.com for assistance
+
+## Data Types & Analysis
+
+### Error Data
+- **Exception Details** - Complete stack traces and error messages
+- **User Context** - User information associated with errors
+- **Request Context** - HTTP request details and parameters
+- **Environment Data** - Runtime environment and configuration information
+
+### Performance Data
+- **Transaction Traces** - Detailed performance traces across services
+- **Database Queries** - SQL query performance and execution details
+- **External Service Calls** - API call performance and failure tracking
+- **Frontend Metrics** - Browser performance and user experience metrics
+
+### User Experience Data
+- **Session Replays** - Visual recordings of user sessions
+- **User Interactions** - Click patterns and navigation behavior
+- **Error User Impact** - Understanding which users are affected by errors
+- **Conversion Funnel Analysis** - Impact of errors on business metrics
+
+The Sentry integration provides comprehensive error monitoring and debugging capabilities, enabling your team to identify, investigate, and resolve issues efficiently through AI-powered assistance while maintaining strict operational controls.
+
+---
+
+*For additional help with Sentry integration, contact our support team at support@getcalmo.com.*

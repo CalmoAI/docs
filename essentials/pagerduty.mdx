@@ -1,45 +1,291 @@
 ---
-title: 'Pagerduty'
-description: 'Add Calmo to PagerDuty and let it help you investigate and run root cause analysis'
+title: 'PagerDuty'
+description: 'Connect Calmo to PagerDuty for comprehensive incident management, escalation, and on-call coordination through AI assistance'
 icon: 'pagerduty'
 ---
 
-# Connecting PagerDuty to Calmo
+# PagerDuty Integration
 
-Calmo integrates with PagerDuty to help you manage incidents, investigate alerts, and run root cause analysis directly from your Slack workspace. This guide will walk you through the process of connecting your PagerDuty account to Calmo.
+Connect Calmo to your PagerDuty account to enable comprehensive incident management, escalation coordination, and on-call optimization through AI assistance. This integration provides access to **specialized tools** across multiple categories for complete incident response workflows.
+
+## Overview & Value Proposition
+
+The PagerDuty integration transforms how your team handles incident management and on-call operations by providing:
+
+- **Intelligent Incident Analysis** - AI-powered investigation of incidents with automatic context gathering
+- **Smart Escalation Management** - Automated escalation policy optimization and routing decisions
+- **On-Call Intelligence** - Intelligent scheduling analysis and workload distribution insights
+- **Service Health Monitoring** - Comprehensive service status tracking and dependency analysis
+- **Incident Response Automation** - Streamlined workflows from detection to resolution
+- **Historical Pattern Recognition** - Learning from past incidents to prevent future occurrences
+
+## Key Capabilities
+
+When connected, Calmo gains access to **PagerDuty tools** across multiple categories:
+
+| Category | Capability |
+|----------|------------|
+| **Incident Management** | Create, update, resolve, and analyze incidents |
+| **Service Monitoring** | Monitor service health and dependencies |
+| **Escalation Policies** | Manage and optimize escalation workflows |
+| **On-Call Scheduling** | Coordinate schedules and coverage analysis |
+| **User Management** | Team coordination and notification management |
+| **Analytics & Reporting** | Historical analysis and performance metrics |
 
 ## Prerequisites
 
-- A PagerDuty account with admin access
-- A Calmo account
+- PagerDuty account with appropriate access permissions
+- Admin or manager access to generate API tokens
+- Calmo account with team or personal workspace
 
-## Generating a PagerDuty API Token
+## Setup Process
 
-To connect PagerDuty to Calmo, you'll need to generate a REST API key. Follow these steps:
+### Step 1: Generate PagerDuty API Token
 
+**Create REST API Key:**
 1. Log in to your [PagerDuty account](https://app.pagerduty.com)
 2. Navigate to **Configuration** → **API Access**
-3. Click the **Create New API Key** button
-4. Provide a descriptive name for your API key (e.g., "Calmo Integration")
-5. Select the appropriate role for the API key (Admin access is recommended for full functionality)
-6. Click **Create Key**
-7. Copy the generated API key immediately (you won't be able to see it again)
+3. Click **Create New API Key**
+4. Configure API key settings:
+   - **Description**: "Calmo Integration"
+   - **Role**: Select appropriate access level
 
-## Data Synced from PagerDuty to Calmo
+**Recommended Access Levels:**
 
-When you connect PagerDuty to Calmo, the integration fetches the following data:
+| Access Level | Capabilities | Use Cases |
+|--------------|-------------|-----------|
+| **Read-Only User** | View incidents, services, schedules | Basic monitoring and analysis |
+| **Observer** | Read incidents, limited write access | Incident investigation with updates |
+| **Responder** | Full incident management | Complete incident response workflows |
+| **Manager/Admin** | All operations including configuration | Full integration capabilities |
 
-1. **Incidents** - Current and historical incident data including status, severity, and assignments
-2. **Services** - Information about your monitored services and their configurations
-3. **Escalation Policies** - Details about how incidents are escalated within your organization
-4. **On-call Schedules** - Information about who is currently on-call and upcoming rotations
-5. **Users** - User information for team members involved in incident response
+5. Click **Create Key**
+6. Copy the generated API key immediately
 
-This data enables Calmo to provide comprehensive incident management and analysis capabilities directly within your Slack workspace, without requiring you to switch contexts to the PagerDuty dashboard.
+### Step 2: Connect to Calmo
 
-## Connecting PagerDuty to Calmo
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **PagerDuty** integration
+3. Enter your **API Token**
+4. Configure tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+5. Complete the connection
 
-The connection to PagerDuty is handled during the onboarding process. The Calmo team ensures that the integration is seamless and properly configured for your environment. No specific data preparation is needed, and the entire integration process typically takes only a few minutes to complete.
+## Tool Categories & Configuration
 
+### 🚨 Incident Management (Mixed Safety)
+**Default: Read operations enabled** - Core incident response capabilities
 
-For additional help, contact Calmo support through the dashboard or via email at support@getcalmo.com.
+**Read Operations (✅ Enabled by default):**
+- **List Incidents** - Query incidents with filtering and status tracking
+- **Get Incident Details** - Retrieve comprehensive incident information
+- **Get Incident Timeline** - Access complete incident response history
+- **List Incident Notes** - View all incident communication and updates
+
+**Write Operations (⚠️ Disabled by default):**
+- **Create Incident** - Trigger new incidents programmatically
+- **Update Incident** - Modify incident status, priority, and assignments
+- **Resolve Incident** - Close incidents with resolution details
+- **Add Incident Note** - Add contextual information to incidents
+
+*Use Cases: Incident investigation, response coordination, status tracking, post-mortem analysis*
+
+### 🔧 Service Management (Safe)
+**Default: Enabled** - Service health and dependency monitoring
+
+- **List Services** - Discover all monitored services and their configurations
+- **Get Service Details** - Retrieve service metadata and health status
+- **List Service Dependencies** - Map service relationships and dependencies
+- **Get Service Metrics** - Access service performance and availability data
+
+*Use Cases: Service discovery, dependency analysis, health monitoring, capacity planning*
+
+### 📈 Escalation Policies (Mixed Safety)
+**Default: Read-only enabled** - Escalation workflow management
+
+**Read Operations (✅ Enabled by default):**
+- **List Escalation Policies** - View all escalation workflows and rules
+- **Get Escalation Policy Details** - Detailed policy configuration and routing
+
+**Write Operations (⚠️ Disabled by default):**
+- **Create Escalation Policy** - Define new escalation workflows
+- **Update Escalation Policy** - Modify existing escalation rules
+
+*Use Cases: Escalation optimization, policy analysis, workflow design, coverage planning*
+
+### 📅 On-Call Scheduling (Mixed Safety)
+**Default: Read operations enabled** - Schedule coordination and management
+
+**Read Operations (✅ Enabled by default):**
+- **List Schedules** - View all on-call schedules and rotations
+- **Get Schedule Details** - Detailed schedule configuration and coverage
+- **List On-Call Users** - Current and upcoming on-call assignments
+- **Get Schedule Overrides** - Temporary schedule modifications
+
+**Write Operations (⚠️ Disabled by default):**
+- **Create Schedule Override** - Temporary schedule adjustments
+- **Update Schedule** - Modify schedule configuration and rotations
+
+*Use Cases: Coverage analysis, schedule optimization, on-call coordination, workload distribution*
+
+### 👥 User Management (Safe)
+**Default: Enabled** - Team coordination and communication
+
+- **List Users** - Directory of all PagerDuty users and their roles
+- **Get User Details** - Detailed user profiles and contact information
+- **List User Contact Methods** - Available communication channels per user
+- **Get User On-Call Status** - Current on-call assignments and availability
+
+*Use Cases: Team coordination, contact management, escalation routing, availability tracking*
+
+### 📊 Analytics & Reporting (Safe)
+**Default: Enabled** - Performance analysis and insights
+
+- **Get Analytics Data** - Historical incident and response metrics
+- **List Log Entries** - Comprehensive audit trail of all activities
+- **Get Service Metrics** - Service-level performance indicators
+- **Generate Reports** - Custom reporting on incidents and response times
+
+*Use Cases: Performance analysis, trend identification, team optimization, compliance reporting*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Organization-wide incident response coordination
+- Shared escalation policies and schedule management
+- Team-level analytics and performance tracking
+- Administrators control incident creation and modification permissions
+
+### Personal Setup
+- Individual on-call schedule management
+- Personal incident investigation and analysis
+- Private analytics and performance insights
+- Full control over enabled tool capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-First Approach** - Begin with read-only operations, add write access gradually
+2. **Token Management** - Regularly rotate API tokens according to security policies
+3. **Scope Limitation** - Use minimal required access level for integration needs
+4. **Incident Hygiene** - Establish clear policies for AI-assisted incident creation
+5. **Escalation Testing** - Regular testing of escalation policies and workflows
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | View incidents, services, schedules | ✅ Safe to enable |
+| **Medium** | Update incidents, add notes | ⚠️ Enable with review |
+| **High** | Create incidents, modify policies | ⚠️ Enable only when necessary |
+
+## Configuration Management
+
+### Updating PagerDuty Connection
+
+1. Navigate to **Integrations** → **PagerDuty**
+2. Click **Edit Configuration**
+3. Update API token or access permissions
+4. Modify tool permissions based on team requirements
+5. Test connection with read-only operations
+6. Save configuration changes
+
+### Managing Multiple Teams
+
+- Configure access to multiple PagerDuty teams and services
+- Set up team-specific tool permissions and workflows
+- Maintain separate escalation policies per team
+- Cross-team incident correlation and analysis
+
+## Advanced Features
+
+### Intelligent Incident Analysis
+- **Context Gathering** - Automatic collection of relevant incident data
+- **Pattern Recognition** - Identification of recurring incident patterns
+- **Root Cause Correlation** - Link incidents to underlying service issues
+- **Impact Assessment** - Automatic evaluation of incident severity and scope
+
+### Escalation Optimization
+- **Policy Analysis** - Review and optimize escalation workflows
+- **Coverage Planning** - Ensure adequate on-call coverage across teams
+- **Workload Distribution** - Balance incident load across team members
+- **Response Time Analysis** - Identify bottlenecks in incident response
+
+### Service Dependency Mapping
+- **Dependency Visualization** - Map complex service relationships
+- **Impact Propagation** - Understand how incidents affect dependent services
+- **Critical Path Analysis** - Identify mission-critical service dependencies
+- **Capacity Planning** - Service growth and scaling recommendations
+
+## Integration Workflows
+
+### Automated Incident Response
+1. **Incident Detection** - Automatic monitoring of PagerDuty incident feeds
+2. **Context Enrichment** - Gather relevant service and historical data
+3. **Impact Analysis** - Assess incident scope and potential effects
+4. **Escalation Intelligence** - Smart routing and escalation recommendations
+5. **Resolution Tracking** - Monitor incident resolution progress
+
+### Proactive Management
+- **Schedule Optimization** - Analysis and recommendations for on-call schedules
+- **Policy Enhancement** - Suggestions for improving escalation policies
+- **Performance Monitoring** - Track team and service performance metrics
+- **Predictive Analysis** - Identify potential issues before they become incidents
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify API token is correct and hasn't expired
+- Check that token hasn't been revoked or deactivated
+- Ensure proper access level for enabled tools
+
+**Permission Denied**
+- Review API token access level and permissions
+- Check team membership for target services and escalation policies
+- Verify organization-level access restrictions
+
+**Rate Limiting**
+- PagerDuty enforces API rate limits (varies by plan)
+- Monitor API usage in PagerDuty account settings
+- Consider upgrading PagerDuty plan for higher limits
+
+**Service Not Found**
+- Verify service names and IDs are correct
+- Check that services exist and are accessible with current token
+- Ensure proper team membership for private services
+
+### Getting Help
+
+1. **Test Connection** - Use connection test feature in integration settings
+2. **Update Token** - Regenerate API token with appropriate access level
+3. **Contact Support** - Reach out to support@getcalmo.com for assistance
+
+## Data Types & Analysis
+
+### Incident Data
+- **Incident Metadata** - Title, description, severity, status, timestamps
+- **Assignment Information** - Current assignees and escalation history
+- **Response Timeline** - Complete incident lifecycle tracking
+- **Resolution Details** - Actions taken and final resolution information
+
+### Service Data
+- **Service Configuration** - Service settings and integration details
+- **Health Status** - Current operational status and availability
+- **Dependency Mapping** - Service relationships and impact analysis
+- **Performance Metrics** - Response times and error rates
+
+### Team Data
+- **User Profiles** - Team member information and contact details
+- **Schedule Information** - On-call rotations and coverage patterns
+- **Escalation Policies** - Workflow definitions and routing rules
+- **Performance Analytics** - Response times and workload distribution
+
+The PagerDuty integration provides comprehensive incident management and on-call coordination capabilities, enabling your team to respond to incidents efficiently and optimize operational workflows through AI-powered assistance while maintaining strict operational controls.
+
+---
+
+*For additional help with PagerDuty integration, contact our support team at support@getcalmo.com.*

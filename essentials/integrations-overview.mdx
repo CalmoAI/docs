@@ -1,22 +1,185 @@
 ---
 title: 'Overview'
-description: 'Understanding how Calmo works with your existing tools'
+description: 'Understanding how Calmo transforms your development and operations workflows through intelligent integrations'
 ---
 
 # Integrations Overview
+
+Calmo transforms your existing development and operations tools into an intelligent, AI-powered workflow engine. Our comprehensive integration platform provides **82+ specialized tools** across **6 major integrations**, enabling your team to solve complex problems through natural conversation.
 
 ## Key Challenges Solved
 
 Calmo integrates with your existing tools to solve critical challenges:
 
-- **Overwhelming Observability** - Cut through alert noise and correlate signals across systems
-- **Costly Downtime** - Reduce MTTR with faster detection and resolution workflows
-- **Investigation Complexity** - Centralize relevant data to simplify root cause analysis
-- **Knowledge Silos** - Capture context and solutions to prevent recurring incidents
+- **Overwhelming Observability** - Cut through alert noise and correlate signals across systems with AI-powered analysis
+- **Costly Downtime** - Reduce MTTR with faster detection and resolution workflows powered by intelligent automation
+- **Investigation Complexity** - Centralize relevant data and provide context-aware root cause analysis
+- **Knowledge Silos** - Capture institutional knowledge and make expert-level insights available to all team members
+- **Manual Operations** - Automate routine tasks while maintaining human oversight and control
+- **Context Switching** - Eliminate the need to switch between multiple tools and dashboards
 
+## Available Integrations
+
+### 🔧 **Infrastructure & Operations**
+
+#### Kubernetes Integration
+**15+ tools across 5 categories** - Complete container orchestration management
+- **Resource Management** - Get, list, describe, apply, and create Kubernetes resources
+- **Operations** - View logs, scale deployments, patch resources, manage rollouts  
+- **Cluster Management** - Context switching, API discovery, resource documentation
+- **Advanced Operations** - Port forwarding, resource deletion, generic kubectl commands
+- **Helm Operations** - Chart installation, upgrades, and lifecycle management
+
+*Use Cases: Cluster monitoring, troubleshooting, deployment management, multi-cloud operations*
+
+#### Datadog Integration  
+**22 tools across 6 categories** - Comprehensive observability and monitoring
+- **Monitoring & Metrics** - Query metrics, dashboards, and monitor configurations
+- **Logs & Traces** - Advanced log analysis and distributed tracing
+- **Infrastructure** - Host management and capacity monitoring
+- **Incidents** - Incident tracking and response coordination
+- **Real User Monitoring** - Frontend performance and user experience analysis
+- **Downtimes** - Maintenance window scheduling and management
+
+*Use Cases: Performance monitoring, error investigation, capacity planning, incident response*
+
+### 🚨 **Incident Management**
+
+#### PagerDuty Integration
+**Comprehensive tools across 6 categories** - End-to-end incident response
+- **Incident Management** - Create, update, resolve, and analyze incidents
+- **Service Monitoring** - Service health and dependency tracking
+- **Escalation Policies** - Workflow optimization and routing management
+- **On-Call Scheduling** - Schedule coordination and coverage analysis
+- **User Management** - Team coordination and notification management
+- **Analytics & Reporting** - Performance metrics and historical analysis
+
+*Use Cases: Incident response, on-call optimization, escalation management, team coordination*
+
+#### Slack Integration
+**8 tools across 4 categories** - Intelligent team communication
+- **Channel Management** - Workspace navigation and channel discovery
+- **Messaging** - Context-aware messaging, threading, and reactions
+- **Data Retrieval** - Historical analysis and conversation context
+- **User Management** - Team identification and profile access
+
+*Use Cases: Automated incident updates, collaborative troubleshooting, knowledge sharing*
+
+### 🛠️ **Development & Code Management**
+
+#### GitHub Integration
+**26 tools across 7 categories** - Complete development workflow automation
+- **Code Reading** - AI-powered code analysis and investigation
+- **Code Management** - File editing and repository modifications
+- **Repository Operations** - Repository creation and management
+- **Branch Management** - Branch workflows and commit analysis
+- **Pull Request Management** - Complete PR lifecycle automation
+- **Issue Management** - Bug tracking and project management
+- **Search & Discovery** - Advanced search across the GitHub ecosystem
+
+*Use Cases: Code review automation, repository management, issue tracking, development acceleration*
+
+#### Sentry Integration
+**11 tools across 5 categories** - Comprehensive error monitoring and debugging
+- **Project Management** - Project discovery and creation
+- **Issue Tracking** - Error investigation and resolution workflow
+- **Error Monitoring** - Event analysis and pattern recognition
+- **Session Replay** - Visual debugging and user experience analysis
+- **Configuration** - Advanced setup and project management
+
+*Use Cases: Error investigation, performance debugging, user experience optimization*
+
+## Integration Capabilities Matrix
+
+| Integration | Total Tools | Read-Only Tools | Write Operations | Safety Level |
+|-------------|-------------|-----------------|------------------|--------------|
+| **Kubernetes** | 15+ | 8 | 7 | Mixed - High control |
+| **GitHub** | 26 | 15 | 11 | Mixed - Graduated access |
+| **Datadog** | 22 | 19 | 3 | Mostly safe |
+| **Sentry** | 11 | 8 | 3 | Mostly safe |
+| **Slack** | 8 | 5 | 3 | Safe with controls |
+| **PagerDuty** | Multiple | Multiple | Multiple | Mixed - Policy-driven |
+| **Total** | **82+** | **55+** | **27+** | **Configurable** |
+
+## Security & Safety First
+
+### 🔒 Graduated Access Model
+
+**Default Configuration:**
+- ✅ **Read-only tools enabled** - Safe discovery and analysis capabilities
+- ❌ **Write operations disabled** - Require explicit enablement for safety
+- 🔧 **Granular control** - Enable specific tools based on team needs
+
+**Permission Levels:**
+- **Low Risk** - Read operations, discovery, analysis (Always safe to enable)
+- **Medium Risk** - Limited write operations, updates (Enable with review)
+- **High Risk** - Destructive operations, configuration changes (Enable only when necessary)
+
+### 🛡️ Enterprise-Grade Controls
+
+- **Team vs Personal Context** - Separate configurations for organization and individual use
+- **Role-Based Access** - Different permission levels based on team roles
+- **Audit Trail** - Complete logging of all AI-powered operations
+- **Rollback Capabilities** - Safe experimentation with easy rollback options
 
 ## Getting Started
 
-Each integration has its own setup process. Select a specific integration from the sidebar to learn how to configure and use it with Calmo.
+### Quick Start Workflow
 
-Need an integration not listed here? [Contact our support team](mailto:support@getcalmo.com).
+1. **Choose Your Integration** - Start with your most critical operational tool
+2. **Connect Safely** - Begin with read-only access for exploration
+3. **Explore Capabilities** - Use AI assistance to understand your systems
+4. **Gradual Enablement** - Add write permissions as trust and understanding builds
+5. **Scale Across Tools** - Expand to additional integrations based on workflow needs
+
+### Setup Recommendations
+
+**For Development Teams:**
+- Start with **GitHub** for code analysis and repository management
+- Add **Sentry** for error monitoring and debugging workflows
+- Integrate **Slack** for collaborative development and incident response
+
+**For Operations Teams:**
+- Begin with **Datadog** for observability and monitoring analysis
+- Add **Kubernetes** for infrastructure management and troubleshooting
+- Include **PagerDuty** for incident response and on-call optimization
+
+**For DevOps Teams:**
+- Implement **full integration suite** for comprehensive coverage
+- Focus on **cross-tool correlation** for complex problem solving
+- Emphasize **automation workflows** while maintaining human oversight
+
+## Advanced Workflows
+
+### Cross-Integration Intelligence
+- **Incident Correlation** - Link alerts across Datadog, PagerDuty, and Slack
+- **Code-to-Production Tracking** - Connect GitHub changes to operational metrics
+- **Error Impact Analysis** - Correlate Sentry errors with infrastructure performance
+- **Automated Response** - Trigger Kubernetes operations based on monitoring alerts
+
+### AI-Powered Workflows
+- **Intelligent Escalation** - Smart routing based on expertise and availability
+- **Pattern Recognition** - Learn from historical data across all integrations
+- **Predictive Analysis** - Anticipate issues before they become critical
+- **Knowledge Synthesis** - Combine insights from multiple tools for comprehensive understanding
+
+## Support & Resources
+
+### Documentation
+Each integration has comprehensive documentation covering:
+- **Setup guides** with step-by-step instructions
+- **Tool references** with detailed capability descriptions  
+- **Security guidelines** and best practices
+- **Troubleshooting** and common issues
+
+### Getting Help
+- **Integration-specific documentation** - Detailed guides for each platform
+- **Community support** - Best practices and workflow sharing
+- **Enterprise support** - Dedicated assistance for complex implementations
+- **Contact us** - [support@getcalmo.com](mailto:support@getcalmo.com) for personalized help
+
+---
+
+Transform your operations with intelligent automation. Each integration is designed to enhance human expertise, not replace it, ensuring your team maintains control while gaining superhuman capabilities.
+
+**Ready to get started?** Select an integration from the sidebar to begin your intelligent automation journey.
