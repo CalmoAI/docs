@@ -24,27 +24,37 @@
             "pages": [
               "essentials/integrations-overview",
               {
+                "group": "Infrastructure",
+                "icon": "server",
+                "pages": [
+                  "essentials/kubernetes"
+                ]
+              },
+              {
                 "group": "Incident Management",
+                "icon": "bell",
                 "pages": [
                   "essentials/pagerduty"
                 ]
               },
               {
                 "group": "Communication Channels",
+                "icon": "comment",
                 "pages": [
                   "essentials/slack"
                 ]
               },
               {
                 "group": "Logs and Monitoring",
+                "icon": "chart-line",
                 "pages": [
-                  "essentials/cloudwatch",
                   "essentials/sentry",
                   "essentials/datadog"
                 ]
               },
               {
                 "group": "Codebase",
+                "icon": "code",
                 "pages": [
                   "essentials/github"
                 ]
