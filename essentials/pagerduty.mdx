@@ -284,6 +284,192 @@ When connected, Calmo gains access to **PagerDuty tools** across multiple catego
 - **Escalation Policies** - Workflow definitions and routing rules
 - **Performance Analytics** - Response times and workload distribution
 
+## PagerDuty Webhooks
+
+Enhance your PagerDuty integration with real-time notifications that automatically create issues in Calmo when incidents occur. This provides seamless incident-to-issue tracking for complete workflow automation.
+
+### Overview & Benefits
+
+PagerDuty webhooks transform how your team handles incident notifications by providing:
+
+- **Automatic Issue Creation** - Incidents become trackable issues in Calmo instantly
+- **Real-time Synchronization** - Status updates flow bidirectionally between systems
+- **Contextual Integration** - Issues include full incident metadata and timeline
+- **Team Collaboration** - Shared visibility across personal and team contexts
+- **Enterprise Security** - Cryptographic signature validation for secure data transfer
+
+### Webhook Capabilities
+
+When configured, PagerDuty webhooks provide comprehensive incident lifecycle tracking:
+
+| Event Category | PagerDuty Events | Calmo Action |
+|----------------|------------------|--------------|
+| **Issue Creation** | `incident.triggered`, `incident.escalated`, `incident.responder.added`, `incident.priority_updated` | Creates new issues with appropriate severity mapping |
+| **Issue Resolution** | `incident.resolved`, `incident.acknowledged` | Marks existing issues as resolved or acknowledged |
+| **Issue Updates** | `incident.annotated`, `incident.delegated`, `incident.reassigned`, `incident.responder.replied` | Updates issue metadata and timeline |
+| **Issue Reopening** | `incident.reopened`, `incident.unacknowledged` | Reopens previously resolved issues |
+
+### Setup Process
+
+#### Step 1: Generate Webhook URL in Calmo
+
+1. Navigate to **Integrations** → **PagerDuty** in your Calmo dashboard
+2. Ensure your PagerDuty integration is active and connected
+3. In the **Webhook Management** section, click **Generate Webhook**
+4. Copy the generated webhook URL securely
+
+#### Step 2: Create PagerDuty V3 Webhook Subscription
+
+1. **Access PagerDuty Webhooks:**
+   - Log in to [PagerDuty](https://app.pagerduty.com)
+   - Navigate to **Integrations** → **Generic Webhooks**
+
+2. **Create Webhook Subscription:**
+   - Click **"Add Webhook Subscription"**
+   - Select **"V3 Webhook Subscription"**
+   - Enter your Calmo webhook URL
+   - Set description: **"Calmo Integration Webhook"**
+   - Choose scope: **Service** or **Account** based on requirements
+
+3. **Configure Event Types:**
+   Select events based on your workflow needs:
+   - **Essential Events**: `incident.triggered`, `incident.resolved`, `incident.acknowledged`
+   - **Extended Events**: `incident.escalated`, `incident.responder.added`, `incident.priority_updated`
+   - **Advanced Events**: All remaining incident events for complete tracking
+
+4. **Apply Filters (Optional):**
+   - **Service Filter**: Limit to specific services
+   - **Team Filter**: Restrict to particular teams
+   - **Leave empty**: Receive all account incidents
+
+5. **Save and Copy Signing Secret:**
+   - Click **"Save"** to create the subscription
+   - **Important**: Copy the signing secret immediately (shown only once)
+
+#### Step 3: Configure Signature Validation (Recommended)
+
+1. Return to Calmo's **Webhook Management** section
+2. Click **"Add Signing Secret"** next to your webhook
+3. Paste the PagerDuty signing secret
+4. Complete the validation wizard to verify security setup
+
+##### How to Get Your PagerDuty Webhook Signing Secret
+
+When setting up webhooks in PagerDuty, follow these steps to obtain your signing secret:
+
+1. **Create a new webhook subscription** in your PagerDuty account
+2. **During setup, PagerDuty will display a signing secret** - copy it immediately
+3. **You won't be able to see it again** after leaving the page
+4. **Paste the secret into Calmo** so we can verify incoming webhooks
+
+> ⚠️ **Important**: If you didn't copy the secret during initial setup, you'll need to create a new webhook subscription to get a new secret.
+
+#### Step 4: Test Integration
+
+1. Use Calmo's **"Test Endpoint"** button for connectivity verification
+2. Trigger a test incident in PagerDuty
+3. Verify the issue appears in your Calmo dashboard
+4. Confirm resolution workflows update correctly
+
+### Security & Best Practices
+
+#### Enterprise Security Features
+
+- **HMAC-SHA256 Encryption**: Industry-standard cryptographic signature validation
+- **Timing-Safe Comparison**: Protection against timing attack vulnerabilities  
+- **Secure Secret Storage**: Encrypted webhook secrets with per-webhook isolation
+- **Request Validation**: Comprehensive payload integrity verification
+
+#### Configuration Best Practices
+
+1. **Always Enable Signature Validation** - Ensures webhook authenticity and prevents spoofing
+2. **Use Service Filters** - Reduce noise by targeting specific services
+3. **Monitor Webhook Status** - Regular testing and status verification
+4. **Secure Secret Management** - Treat signing secrets as sensitive credentials
+5. **Test Thoroughly** - Validate complete incident lifecycle workflows
+
+### Priority and Severity Mapping
+
+PagerDuty incident priorities automatically map to appropriate Calmo severity levels:
+
+| PagerDuty Priority | Calmo Severity | Visual Indicator |
+|-------------------|----------------|-----------------|
+| **P1, P2, Critical, High** | Critical | Red alert indicators |
+| **P3, Medium** | Warning | Yellow warning indicators |
+| **P4, P5, Low, Info** | Info | Blue informational indicators |
+| **Unknown/Unset** | Medium | Default yellow indicators |
+
+This mapping ensures consistent incident classification and appropriate response prioritization across both systems.
+
+### Team vs Personal Webhooks
+
+#### Personal Webhook Configuration
+- **Scope**: Individual user context
+- **Visibility**: Private to webhook creator
+- **Use Case**: Personal on-call responsibilities and individual incident tracking
+- **Setup**: Generate webhook without organization context
+
+#### Team Webhook Configuration  
+- **Scope**: Organization/team context
+- **Visibility**: Shared across all team members
+- **Use Case**: Collaborative incident response and team coordination
+- **Setup**: Generate webhook with organization ID parameter
+
+### Advanced Integration Scenarios
+
+#### Multi-Service Monitoring
+- Configure separate webhooks for different service categories
+- Use PagerDuty service filters for targeted incident routing
+- Implement team-specific webhooks for service ownership models
+
+#### Escalation Policy Integration
+- Map PagerDuty escalation events to Calmo issue assignments
+- Track escalation patterns for team performance analysis
+- Automate response coordination through combined incident and issue workflows
+
+#### Analytics and Reporting
+- Leverage webhook data for incident trend analysis
+- Combine PagerDuty API tools with webhook automation
+- Generate custom reports on incident response effectiveness
+
+### Troubleshooting
+
+#### Common Issues and Solutions
+
+**Webhook Not Receiving Events:**
+- Verify webhook URL is correctly configured in PagerDuty
+- Check PagerDuty integration status in Calmo (must be active)
+- Confirm selected event types match your testing scenarios
+- Use Calmo's "Test Endpoint" feature for connectivity verification
+
+**Signature Validation Failures:**
+- Ensure signing secret was copied correctly during PagerDuty setup
+- Verify the secret was pasted without extra whitespace or characters
+- Re-run the validation wizard if verification fails
+- Check webhook logs for specific signature mismatch details
+
+**Issues Not Created in Expected Context:**
+- Verify organization ID parameter for team vs personal webhooks
+- Confirm team membership for organization-scoped webhooks
+- Check webhook generation logs for context configuration
+
+**Missing Issue Updates:**
+- Ensure comprehensive event type selection in PagerDuty
+- Verify incident IDs match between PagerDuty events and Calmo issues
+- Check for webhook rate limiting or delivery failures
+
+#### Advanced Debugging
+
+Access webhook logs and metrics through Calmo's integration management interface:
+- **Connectivity Tests**: Real-time endpoint verification
+- **Event Logs**: Complete webhook delivery history  
+- **Signature Validation Logs**: Security verification audit trail
+- **Issue Creation Tracking**: End-to-end workflow monitoring
+
+For persistent issues or advanced configuration requirements, contact support at support@getcalmo.com.
+
+---
+
 The PagerDuty integration provides comprehensive incident management and on-call coordination capabilities, enabling your team to respond to incidents efficiently and optimize operational workflows through AI-powered assistance while maintaining strict operational controls.
 
 ---
