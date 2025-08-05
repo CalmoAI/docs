@@ -49,21 +49,14 @@ When connected, Calmo gains access to **15+ Kubernetes tools** across **5 catego
 
 **Step 2: Connect to Calmo**
 
+![Kubernetes Integration Setup](../images/kubernetes-integration-setup.gif)
+
 1. Navigate to **Integrations** in your Calmo dashboard
 2. Click **Kubernetes** integration
 3. Choose **Upload Kubeconfig File**
 4. Select your kubeconfig file or paste the contents
 5. Select your desired **context** from available options
 6. Choose target **namespace** (default: `default`)
-
-**Step 3: Configure Tool Access**
-
-Review and customize tool categories based on your needs:
-
-- ✅ **Resource Management** - Read operations (get, list, describe) enabled by default
-- ❌ **Write Operations** - Apply, create, delete disabled by default for safety
-- ✅ **Cluster Management** - Context switching and resource discovery enabled
-- ❌ **Advanced Operations** - Port forwarding and generic commands disabled by default
 
 ### Method 2: Cloud Provider Service Account (Enhanced Security)
 
@@ -87,17 +80,6 @@ For enhanced security with cloud providers, you can supplement kubeconfig with s
 1. Create Azure service principal
 2. Assign Kubernetes permissions
 3. Configure kubeconfig with Azure authentication
-
-## Tool Categories & Configuration
-
-### 🔍 Resource Management (Read-Safe)
-**Default: Enabled** - Essential for cluster visibility
-
-- **kubectl_get** - Retrieve specific Kubernetes resources
-- **kubectl_list** - List resources by type across namespaces  
-- **kubectl_describe** - Get detailed resource information
-- **kubectl_apply** - Apply configuration changes (⚠️ Write operation)
-- **kubectl_create** - Create new resources (⚠️ Write operation)
 
 *Use Cases: Resource discovery, status checking, configuration analysis*
 
@@ -171,6 +153,26 @@ For enhanced security with cloud providers, you can supplement kubeconfig with s
 | **High** | Delete, Generic commands | ❌ Enable only when necessary |
 
 ## Configuration Management
+## Configure Tool Access**
+
+Review and customize tool categories based on your needs:
+
+- ✅ **Resource Management** - Read operations (get, list, describe) enabled by default
+- ❌ **Write Operations** - Apply, create, delete disabled by default for safety
+- ✅ **Cluster Management** - Context switching and resource discovery enabled
+- ❌ **Advanced Operations** - Port forwarding and generic commands disabled by default
+
+
+## Tool Categories & Configuration
+
+### 🔍 Resource Management (Read-Safe)
+**Default: Enabled** - Essential for cluster visibility
+
+- **kubectl_get** - Retrieve specific Kubernetes resources
+- **kubectl_list** - List resources by type across namespaces  
+- **kubectl_describe** - Get detailed resource information
+- **kubectl_apply** - Apply configuration changes (⚠️ Write operation)
+- **kubectl_create** - Create new resources (⚠️ Write operation)
 
 ### Updating Cluster Configuration
 
