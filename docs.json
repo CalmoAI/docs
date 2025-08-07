@@ -24,39 +24,52 @@
             "pages": [
               "essentials/integrations-overview",
               {
-                "group": "Infrastructure",
+                "group": "Infrastructure & Operations",
                 "icon": "server",
                 "pages": [
-                  "essentials/kubernetes"
+                  "essentials/kubernetes",
+                  "essentials/datadog",
+                  "essentials/signoz",
+                  "essentials/grafana"
                 ]
               },
               {
                 "group": "Incident Management",
                 "icon": "bell",
                 "pages": [
-                  "essentials/pagerduty"
-                ]
-              },
-              {
-                "group": "Communication Channels",
-                "icon": "comment",
-                "pages": [
+                  "essentials/pagerduty",
                   "essentials/slack"
                 ]
               },
               {
-                "group": "Logs and Monitoring",
-                "icon": "chart-line",
+                "group": "Development & Code",
+                "icon": "code",
                 "pages": [
-                  "essentials/sentry",
-                  "essentials/datadog"
+                  "essentials/github",
+                  "essentials/sentry"
                 ]
               },
               {
-                "group": "Codebase",
-                "icon": "code",
+                "group": "Data & Analytics",
+                "icon": "database",
                 "pages": [
-                  "essentials/github"
+                  "essentials/databricks",
+                  "essentials/redshift",
+                  "essentials/s3"
+                ]
+              },
+              {
+                "group": "LLM & AI Operations",
+                "icon": "brain",
+                "pages": [
+                  "essentials/langfuse"
+                ]
+              },
+              {
+                "group": "Productivity",
+                "icon": "book",
+                "pages": [
+                  "essentials/notion"
                 ]
               }
             ]
