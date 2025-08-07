@@ -24,10 +24,16 @@
             "pages": [
               "essentials/integrations-overview",
               {
-                "group": "Infrastructure & Operations",
+                "group": "Infrastructure",
                 "icon": "server",
                 "pages": [
-                  "essentials/kubernetes",
+                  "essentials/kubernetes"
+                ]
+              },
+              {
+                "group": "Observability Tools",
+                "icon": "chart-line",
+                "pages": [
                   "essentials/datadog",
                   "essentials/signoz",
                   "essentials/grafana"
