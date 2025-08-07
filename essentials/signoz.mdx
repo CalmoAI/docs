@@ -1,0 +1,276 @@
+---
+title: 'SigNoz'
+description: 'Connect Calmo to SigNoz for comprehensive observability, monitoring, and performance analysis through AI assistance'
+icon: 'chart-line'
+---
+
+# SigNoz Integration
+
+Connect Calmo to your SigNoz instance to enable comprehensive observability, monitoring, and performance analysis through AI assistance. This integration provides access to **9 specialized tools** across **4 categories** for complete observability and APM workflows.
+
+## Overview & Value Proposition
+
+The SigNoz integration transforms how your team handles observability and monitoring by providing:
+
+- **APM** - Application Performance Monitoring with distributed tracing and metrics analysis
+- **Advanced Query Capabilities** - Both ClickHouse SQL and SigNoz builder queries for custom analysis
+- **Dashboard Querying** - Complete dashboard lifecycle queries with data visualization
+- **Service Discovery** - Automatic instrumented service detection and monitoring
+- **Intelligent Debugging** - AI-powered trace and log analysis for faster issue resolution
+- **Safe Operations** - Read-only tools enabled by default with controlled write access
+
+## Key Capabilities
+
+When connected, Calmo gains access to **9 SigNoz tools** across **4 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Dashboard Management** | 3 tools | List, view, and analyze dashboard data |
+| **APM & Metrics** | 3 tools | Service monitoring, metrics analysis, and builder queries |
+| **Data Analysis** | 2 tools | Advanced ClickHouse queries and trace/log investigation |
+| **Connection & Setup** | 1 tool | Connection verification and configuration testing |
+
+## Prerequisites
+
+- SigNoz instance with API access enabled
+- Admin access to generate API keys
+- Calmo account with team or personal workspace
+
+## Setup Process
+
+### Step 1: Access Your SigNoz Instance
+
+**Locate Your SigNoz URL:**
+1. Navigate to your SigNoz dashboard
+2. Note your instance URL (e.g., `https://your-signoz-instance.com`)
+3. Ensure API access is enabled on your instance
+
+### Step 2: Generate SigNoz API Key
+
+**Create API Key:**
+1. Log in to your SigNoz instance
+2. Navigate to **Settings** → **API** (or equivalent in your SigNoz version)
+3. Click **Create New API Key**
+4. Configure key settings:
+   - **Name**: "Calmo Integration"
+   - **Permissions**: Ensure read access to dashboards, metrics, and logs
+5. Copy the generated API key immediately
+
+**Required Permissions:**
+- Dashboard read access
+- Metrics query access
+- Trace and log read access
+- Service discovery access
+
+### Step 3: Connect to Calmo
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **SigNoz** integration
+3. Enter your **SigNoz URL** (including protocol: https://)
+4. Enter your **API Key**
+5. Configure tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+6. Test the connection using the built-in connection test
+7. Complete the integration setup
+
+## Tool Categories & Configuration
+
+### 📊 Dashboard Management (Safe)
+**Default: Enabled** - Essential for observability visualization
+
+- **signoz_fetch_dashboards** - List all available dashboards with metadata
+- **signoz_fetch_dashboard_details** - Retrieve detailed dashboard configuration by ID
+- **signoz_fetch_dashboard_data** - Fetch all panel data for dashboards with time range filtering
+
+*Use Cases: Dashboard discovery, performance monitoring, data visualization, trend analysis*
+
+### 🔍 APM & Metrics (Safe)
+**Default: Enabled** - Core application performance monitoring
+
+- **signoz_fetch_apm_metrics** - Retrieve standard APM metrics (request rate, error rate, latency, apdex)
+- **signoz_fetch_services** - List all instrumented services with optional time filtering
+- **signoz_execute_builder_query** - Execute SigNoz builder queries for custom metrics and aggregations
+
+*Use Cases: Service health monitoring, performance analysis, custom metric analysis, SLI/SLO tracking*
+
+### 🗄️ Data Analysis (Safe)
+**Default: Enabled** - Advanced querying and investigation capabilities
+
+- **signoz_execute_clickhouse_query** - Execute custom ClickHouse SQL queries with time range support
+- **signoz_fetch_traces_or_logs** - Fetch traces or logs using ClickHouse SQL with advanced filtering
+
+*Use Cases: Advanced analytics, custom reporting, deep trace analysis, log investigation*
+
+### 🔧 Connection & Setup (Safe)
+**Default: Enabled** - Configuration and connectivity verification
+
+- **signoz_test_connection** - Verify connectivity and configuration health
+
+*Use Cases: Integration testing, troubleshooting, configuration validation*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared SigNoz instance access across team members
+- Organization-level observability policies and dashboards
+- Centralized APM monitoring and alerting workflows
+- Team administrators control access to production metrics
+
+### Personal Setup
+- Individual SigNoz instance connections
+- Personal dashboard preferences and custom queries
+- Private metric analysis and debugging sessions
+- Full control over enabled tool capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-Only First** - Begin with read-only access, monitor usage patterns
+2. **API Key Security** - Use dedicated API keys with minimal required permissions
+3. **URL Validation** - Ensure SigNoz URL uses HTTPS for secure communication
+4. **Access Control** - Leverage SigNoz's built-in access control and user management
+5. **Time Range Limits** - Use appropriate time ranges to avoid overwhelming queries
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | View dashboards, query metrics, read traces/logs | ✅ Safe to enable |
+| **Medium** | Custom ClickHouse queries, service discovery | ✅ Generally safe |
+| **High** | Future write operations (not currently available) | ⚠️ Enable with caution |
+
+## Configuration Management
+
+### Updating SigNoz Connection
+
+1. Navigate to **Integrations** → **SigNoz**
+2. Click **Edit Configuration**
+3. Update SigNoz URL or API key as needed
+4. Test connection to verify changes
+5. Save configuration updates
+
+### Managing Multiple Environments
+
+- Connect separate SigNoz instances for different environments
+- Use different API keys for production vs staging
+- Configure environment-specific observability policies
+- Maintain separate monitoring workflows per environment
+
+## Advanced Features
+
+### Time Range Support
+All SigNoz tools support comprehensive time range filtering:
+- **Flexible Time Windows** - Minutes to months of historical data
+- **Real-Time Queries** - Near real-time metric and trace analysis
+- **Custom Time Ranges** - Precise time window selection for investigation
+- **Performance Optimization** - Intelligent query optimization based on time ranges
+
+### Custom Query Capabilities
+
+**ClickHouse SQL Queries:**
+- Direct access to SigNoz's underlying ClickHouse database
+- Complex analytical queries with joins and aggregations
+- Custom metric calculations and data transformations
+- Advanced filtering and grouping operations
+
+**SigNoz Builder Queries:**
+- Native SigNoz query interface for metrics and aggregations
+- Pre-built aggregation functions (sum, avg, max, min, percentiles)
+- Group-by operations for dimensional analysis
+- Filter combinations for precise data selection
+
+### Dashboard Integration
+- **Existing Dashboard Access** - Work with current SigNoz dashboards
+- **Panel-Level Data** - Access individual panel configurations and data
+- **Time-Synchronized Analysis** - Correlate data across multiple dashboard panels
+- **Export Capabilities** - Extract dashboard data for external analysis
+
+## Observability Workflows
+
+### Application Performance Monitoring
+- **Service Health Overview** - Monitor all instrumented services
+- **Request Rate Analysis** - Track throughput patterns and trends
+- **Error Rate Monitoring** - Identify and investigate error patterns
+- **Latency Analysis** - Performance bottleneck identification
+- **Apdex Scoring** - User satisfaction metric tracking
+
+### Distributed Tracing
+- **Trace Investigation** - Deep dive into request flows across services
+- **Performance Bottlenecks** - Identify slow operations and dependencies
+- **Error Correlation** - Link errors to specific trace spans
+- **Service Dependencies** - Understand service interaction patterns
+
+### Log Analysis
+- **Structured Log Queries** - Advanced log filtering and searching
+- **Error Log Investigation** - Correlate errors with traces and metrics
+- **Custom Log Analytics** - Business-specific log analysis patterns
+- **Real-Time Log Monitoring** - Live log stream analysis
+
+## Troubleshooting
+
+### Common Issues
+
+**Connection Failed**
+- Verify SigNoz URL is correct and accessible
+- Check API key is valid and has required permissions
+- Ensure SigNoz instance is running and responsive
+- Verify network connectivity to SigNoz instance
+
+**Authentication Failed**
+- Regenerate API key in SigNoz settings
+- Check API key hasn't expired or been revoked
+- Verify API access is enabled on SigNoz instance
+- Ensure proper permissions are assigned to the key
+
+**Query Timeouts**
+- Reduce time range for large data queries
+- Optimize ClickHouse queries for better performance
+- Check SigNoz instance resource availability
+- Consider upgrading SigNoz instance if consistently slow
+
+**Missing Data**
+- Verify services are properly instrumented
+- Check SigNoz data retention policies
+- Ensure proper time range selection
+- Verify data collection is active for target services
+
+### Getting Help
+
+1. **Test Connection** - Use the built-in connection test feature
+2. **Update Credentials** - Regenerate API key if authentication issues persist
+3. **Check Documentation** - Refer to SigNoz official documentation for setup issues
+4. **Contact Support** - Reach out to support@getcalmo.com for integration assistance
+
+## Data Types & Analysis
+
+### Metrics Data
+- **Application Metrics** - Request rates, error rates, response times, throughput
+- **Infrastructure Metrics** - CPU, memory, disk, network utilization from instrumented services
+- **Custom Metrics** - Business-specific KPIs and application-defined metrics
+- **Aggregated Metrics** - Pre-computed aggregations with various time windows
+
+### Trace Data
+- **Distributed Traces** - Complete request journeys across microservices
+- **Span Details** - Individual operation performance and metadata
+- **Service Maps** - Visual representation of service dependencies
+- **Error Traces** - Failed request traces with error context
+
+### Log Data
+- **Application Logs** - Structured and unstructured application logging
+- **Infrastructure Logs** - System-level logs from instrumented hosts
+- **Custom Log Sources** - Integration with various logging frameworks
+- **Correlated Logs** - Logs linked to specific traces and spans
+
+### Dashboard Data
+- **Panel Configurations** - Chart types, queries, and visualization settings
+- **Time Series Data** - Historical metric data for trend analysis
+- **Alert Configurations** - Alert rules and notification settings
+- **Dashboard Metadata** - Organization, tags, and sharing permissions
+
+The SigNoz integration provides comprehensive observability capabilities built on open-source technology, enabling your team to monitor, analyze, and optimize application performance efficiently through AI-powered assistance while maintaining complete control over your observability stack.
+
+---
+
+*For additional help with SigNoz integration, contact our support team at support@getcalmo.com.*

@@ -1,0 +1,333 @@
+---
+title: 'Notion'
+description: 'Connect Calmo to Notion for comprehensive workspace data access and knowledge management through AI assistance'
+icon: 'book'
+---
+
+# Notion Integration
+
+Connect Calmo to your Notion workspace to enable workspace data access and knowledge management through AI assistance. This integration provides access to **24 specialized tools** across **7 categories** for complete knowledge management and collaboration workflows.
+
+## Overview & Value Proposition
+
+The Notion integration transforms how your team handles knowledge management and workspace collaboration by providing:
+
+- **Intelligent Database Operations** - AI-powered database querying and content analysis
+- **Advanced Page Management** - Comprehensive page creation, modification, and content extraction
+- **Smart Block Manipulation** - Precise block-level content management and organization
+- **Collaborative Features** - Enhanced commenting and collaboration workflows
+- **Powerful Search** - AI-enhanced search across your entire Notion workspace
+- **Safe Operations** - Read-only tools enabled by default with controlled write access
+
+## Key Capabilities
+
+When connected, Calmo gains access to **24 Notion tools** across **7 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Users** | 3 tools | Manage and retrieve Notion users |
+| **Databases** | 3 tools | Query, update, and retrieve databases |
+| **Pages** | 3 tools | Work with Notion pages and content |
+| **Blocks** | 5 tools | Manipulate Notion blocks and content structure |
+| **Comments** | 2 tools | Read and create comments for collaboration |
+| **Search** | 1 tool | Search across your Notion workspace |
+| **Properties** | 1 tool | Work with page properties and metadata |
+
+## Prerequisites
+
+- Notion workspace with integration permissions
+- Admin access to create integrations and generate tokens
+- Calmo account with team or personal workspace
+
+## Setup Process
+
+### Step 1: Create Notion Integration
+
+**Create Internal Integration:**
+1. Navigate to [Notion Integrations Dashboard](https://www.notion.com/my-integrations)
+2. Click **+ New integration**
+3. Configure integration settings:
+   - **Name**: "Calmo Integration"
+   - **Associated workspace**: Select your target workspace
+   - **Type**: Internal integration
+4. Configure capabilities (based on desired tool access):
+   - **Read content**: Required for all read operations
+   - **Update content**: Required for write operations
+   - **Insert content**: Required for content creation
+   - **Read comments**: Required for comment access
+   - **Insert comments**: Required for comment creation
+5. Submit the integration creation
+
+### Step 2: Generate Integration Token
+
+**Get Integration Token:**
+1. After creating the integration, navigate to its settings page
+2. Copy the **Internal Integration Token** immediately
+3. Store the token securely - you'll need it for the Calmo connection
+
+**Integration Token Security:**
+- Tokens provide access to shared pages and databases only
+- Tokens do not grant access to private content unless explicitly shared
+- Regularly rotate tokens according to security policies
+
+### Step 3: Share Content with Integration
+
+**Share Pages and Databases:**
+1. Navigate to the Notion pages or databases you want to access through Calmo
+2. Click **Share** in the top-right corner
+3. Click **Add connections**
+4. Search for and select your "Calmo Integration"
+5. Confirm the connection
+
+**Important Notes:**
+- Only shared content will be accessible through the integration
+- Sharing can be done at the page or database level
+- Sub-pages inherit sharing permissions from parent pages
+
+### Step 4: Connect to Calmo
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Notion** integration
+3. Enter your **Integration Token**
+4. Configure tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+5. Test the connection using the built-in connection test
+6. Complete the integration setup
+
+## Tool Categories & Configuration
+
+### **Users** (Safe)
+**Default: Enabled** - User management and identification
+
+- **API-get-user** - Retrieve a single Notion user by ID
+- **API-get-users** - List all users in the workspace
+- **API-get-self** - Get information about the current integration
+
+*Use Cases: Team identification, user directory, collaboration management*
+
+### **Databases** (Mixed Safety)
+**Default: Read operations enabled** - Database management and querying
+
+**Read Operations (✅ Enabled by default):**
+- **API-post-database-query** - Query databases with filters and sorting
+- **API-retrieve-a-database** - Retrieve database schema and configuration
+
+**Write Operations (⚠️ Disabled by default):**
+- **API-update-a-database** - Update database properties and configuration
+
+*Use Cases: Data analysis, content discovery, database administration, reporting*
+
+### **Pages** (Mixed Safety)
+**Default: Read operations enabled** - Page content management
+
+**Read Operations (✅ Enabled by default):**
+- **API-retrieve-a-page** - Retrieve page content and metadata
+
+**Write Operations (⚠️ Disabled by default):**
+- **API-patch-page** - Update existing page properties and content
+- **API-post-page** - Create new pages in the workspace
+
+*Use Cases: Content analysis, documentation management, page creation, knowledge extraction*
+
+### **Blocks** (Mixed Safety)
+**Default: Read operations enabled** - Block-level content manipulation
+
+**Read Operations (✅ Enabled by default):**
+- **API-get-block-children** - Get children blocks of a parent block
+- **API-retrieve-a-block** - Retrieve specific block information
+
+**Write Operations (⚠️ Disabled by default):**
+- **API-patch-block-children** - Update children blocks content
+- **API-update-a-block** - Update specific block content
+- **API-delete-a-block** - Delete blocks from pages
+
+*Use Cases: Content structure analysis, block-level editing, content organization, detailed formatting*
+
+### **Comments** (Mixed Safety)
+**Default: Read operations enabled** - Collaboration and feedback management
+
+**Read Operations (✅ Enabled by default):**
+- **API-retrieve-a-comment** - Retrieve comments from pages and blocks
+
+**Write Operations (⚠️ Disabled by default):**
+- **API-create-a-comment** - Create new comments for collaboration
+
+*Use Cases: Feedback analysis, collaboration tracking, discussion management*
+
+### **Search** (Safe)
+**Default: Enabled** - Workspace-wide content discovery
+
+- **API-post-search** - Search across your accessible Notion workspace
+
+*Use Cases: Content discovery, knowledge retrieval, cross-page analysis, research*
+
+### **Properties** (Safe)
+**Default: Enabled** - Page metadata and property management
+
+- **API-retrieve-a-page-property** - Retrieve specific page properties and values
+
+*Use Cases: Metadata analysis, property extraction, data validation, reporting*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared Notion workspace access across team members
+- Organization-level knowledge management and documentation policies
+- Centralized content creation and collaboration workflows
+- Team administrators control page creation and modification permissions
+
+### Personal Setup
+- Individual Notion workspace connections
+- Personal knowledge management and note-taking
+- Private content analysis and organization
+- Full control over enabled tool capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Selective Sharing** - Share only necessary pages and databases with the integration
+2. **Read-First Approach** - Begin with read-only operations, add write access gradually
+3. **Token Security** - Use dedicated integration tokens with minimal required permissions
+4. **Access Monitoring** - Regularly review shared content and integration access
+5. **Content Validation** - Validate content before bulk operations or automated changes
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | Retrieve users, pages, databases, search content | ✅ Safe to enable |
+| **Medium** | Retrieve comments, page properties | ✅ Generally safe |
+| **High** | Create/update pages, modify blocks, create comments | ⚠️ Enable with caution |
+
+## Configuration Management
+
+### Updating Notion Connection
+
+1. Navigate to **Integrations** → **Notion**
+2. Click **Edit Configuration**
+3. Update integration token if needed
+4. Modify tool permissions based on team requirements
+5. Test connection to verify changes
+6. Save configuration updates
+
+### Managing Content Access
+
+- **Add New Content**: Share additional pages/databases with the integration
+- **Remove Access**: Unshare content that should no longer be accessible
+- **Audit Access**: Regularly review which content is shared with integrations
+- **Permission Updates**: Modify integration capabilities in Notion settings
+
+## Advanced Features
+
+### Database Intelligence
+- **Advanced Querying** - Complex database queries with filters, sorts, and aggregations
+- **Schema Analysis** - Automatic database schema discovery and validation
+- **Data Relationships** - Cross-database relationship analysis and mapping
+- **Content Classification** - AI-powered content categorization and tagging
+
+### Content Analysis
+- **Semantic Search** - AI-enhanced search across all accessible content
+- **Content Insights** - Automated content analysis and summarization
+- **Knowledge Mapping** - Relationship discovery between pages and concepts
+- **Quality Assessment** - Content quality and completeness analysis
+
+### Collaboration Enhancement
+- **Activity Tracking** - Monitor collaboration patterns and engagement
+- **Comment Analysis** - Analyze feedback and discussion patterns
+- **Team Insights** - Understand team collaboration and knowledge sharing
+- **Workflow Optimization** - Identify and optimize content creation workflows
+
+## Knowledge Management Workflows
+
+### Content Discovery
+- **Intelligent Search** - AI-powered search across entire workspace
+- **Content Recommendations** - Suggest relevant content based on context
+- **Knowledge Gaps** - Identify missing or incomplete documentation
+- **Content Clustering** - Group related content for better organization
+
+### Documentation Management
+- **Automated Documentation** - Generate documentation from existing content
+- **Content Standards** - Enforce documentation standards and templates
+- **Version Tracking** - Monitor content changes and version history
+- **Quality Assurance** - Automated content quality checks and validation
+
+### Team Collaboration
+- **Knowledge Sharing** - Facilitate knowledge transfer between team members
+- **Collaboration Analytics** - Analyze team collaboration patterns
+- **Expertise Mapping** - Identify subject matter experts and knowledge areas
+- **Workflow Automation** - Automate routine content management tasks
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify integration token is correct and hasn't been revoked
+- Check integration permissions in Notion integration settings
+- Ensure integration is properly configured in Notion workspace
+- Verify network connectivity to Notion API
+
+**Content Not Accessible**
+- Confirm content is shared with the Calmo integration
+- Check page and database sharing permissions
+- Verify content exists and hasn't been deleted
+- Review workspace access and user permissions
+
+**Operation Not Permitted**
+- Check integration capabilities in Notion settings
+- Verify required permissions are enabled for the operation
+- Confirm user has appropriate workspace permissions
+- Review integration token scope and access levels
+
+**API Rate Limiting**
+- Notion enforces API rate limits based on plan type
+- Monitor API usage and request frequency
+- Implement appropriate delays between operations
+- Consider upgrading Notion plan for higher limits
+
+### Getting Help
+
+1. **Test Connection** - Use the built-in connection test feature
+2. **Update Token** - Regenerate integration token if authentication issues persist
+3. **Check Sharing** - Verify content is properly shared with the integration
+4. **Contact Support** - Reach out to support@getcalmo.com for integration assistance
+
+## Data Types & Analysis
+
+### User Data
+- **User Profiles** - User information, roles, and workspace permissions
+- **Activity Patterns** - User activity and collaboration patterns
+- **Expertise Areas** - User knowledge areas and content contributions
+- **Team Structure** - Team organization and collaboration relationships
+
+### Page Data
+- **Content Structure** - Page hierarchy, organization, and relationships
+- **Content Analysis** - Text analysis, summarization, and key insights
+- **Metadata** - Page properties, tags, and classification information
+- **Version History** - Page change history and evolution tracking
+
+### Database Data
+- **Schema Information** - Database structure, properties, and relationships
+- **Record Data** - Database records with full property values
+- **Query Results** - Filtered and sorted database query results
+- **Usage Analytics** - Database access patterns and usage statistics
+
+### Block Data
+- **Content Blocks** - Individual content blocks with type and formatting
+- **Block Hierarchy** - Parent-child relationships and content structure
+- **Rich Content** - Images, files, embeds, and multimedia content
+- **Formatting** - Text formatting, styling, and presentation information
+
+### Comment Data
+- **Discussion Threads** - Comment conversations and reply chains
+- **Feedback Analysis** - Comment sentiment and feedback patterns
+- **Collaboration Metrics** - Comment frequency and engagement levels
+- **Resolution Tracking** - Issue resolution and feedback follow-up
+
+The Notion integration provides comprehensive workspace data access and knowledge management capabilities, enabling your team to analyze content, manage databases, and optimize collaboration efficiently through AI-powered assistance while maintaining strict access controls.
+
+---
+
+*For additional help with Notion integration, contact our support team at support@getcalmo.com.*

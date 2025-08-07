@@ -1,0 +1,270 @@
+---
+title: 'Langfuse'
+description: 'Connect Calmo to Langfuse for comprehensive LLM observability and prompt management through AI assistance'
+icon: 'brain'
+---
+
+# Langfuse Integration
+
+Connect Calmo to your Langfuse instance to enable LLM observability and prompt management through AI assistance. This integration provides access to **9 specialized tools** across **3 categories** for complete LLM monitoring and optimization workflows.
+
+## Overview & Value Proposition
+
+The Langfuse integration transforms how your team handles LLM operations and observability by providing:
+
+- **Intelligent Prompt Management** - AI-powered prompt optimization and version control
+- **Advanced Trace Analysis** - Comprehensive LLM execution tracing with performance insights
+- **Session Analytics** - User activity analysis and conversation pattern recognition
+- **Cost Optimization** - Token usage analysis and cost monitoring across LLM providers
+- **Quality Assurance** - Automated evaluation and quality scoring of LLM outputs
+- **Safe Operations** - All tools are read-only for secure observability without data modification
+
+## Key Capabilities
+
+When connected, Calmo gains access to **9 Langfuse tools** across **3 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Prompt Management** | 2 tools | Manage and retrieve prompts with version control |
+| **Trace & Observations** | 5 tools | Analyze LLM execution traces and performance |
+| **Session Analytics** | 2 tools | Session analysis and user activity monitoring |
+
+## Prerequisites
+
+- Langfuse instance (cloud or self-hosted) with API access
+- Project access with appropriate permissions
+- Calmo account with team or personal workspace
+
+## Setup Process
+
+### Step 1: Access Your Langfuse Instance
+
+**Locate Your Langfuse Configuration:**
+1. Navigate to your Langfuse dashboard
+2. Note your instance URL (e.g., `https://cloud.langfuse.com` or your self-hosted URL)
+3. Ensure you have project access and API key generation permissions
+
+### Step 2: Generate Langfuse API Keys
+
+**Create Project API Keys:**
+1. Log in to your Langfuse instance
+2. Navigate to your target project
+3. Go to **Settings** → **API Keys**
+4. Click **Create new API key pair**
+5. Configure key settings:
+   - **Description**: "Calmo Integration"
+   - **Permissions**: Read-only (recommended for security)
+6. Copy both the **Public Key** and **Secret Key** immediately
+
+**API Key Types:**
+- **Public Key**: Used for client-side operations and identification
+- **Secret Key**: Used for server-side operations and authentication
+- **Base URL**: Your Langfuse instance URL (cloud or self-hosted)
+
+**Required Permissions:**
+- Read access to prompts and prompt versions
+- Read access to traces and observations
+- Read access to sessions and user activity data
+- Read access to project statistics and metadata
+
+### Step 3: Connect to Calmo
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Langfuse** integration
+3. Enter your **Public Key**
+4. Enter your **Secret Key**
+5. Enter your **Base URL** (defaults to `https://cloud.langfuse.com`)
+6. Configure tool permissions:
+   - ✅ **All operations are read-only** for security
+   - ✅ **All tools enabled by default** for comprehensive observability
+7. Test the connection using the built-in connection test
+8. Complete the integration setup
+
+## Tool Categories & Configuration
+
+### **Prompt Management** (Safe)
+**Default: Enabled** - Essential for prompt optimization and version control
+
+- **get-prompts** - Get all prompts with metadata and version information
+- **get-prompt** - Get a specific prompt with full version history and configuration
+
+*Use Cases: Prompt discovery, version comparison, performance analysis, optimization tracking*
+
+### **Trace & Observations** (Safe)
+**Default: Enabled** - Core LLM execution monitoring and analysis
+
+- **get_trace** - Get comprehensive trace information with all spans and metadata
+- **get-trace-details** - Get detailed trace information including costs and performance
+- **fetch-traces** - Fetch multiple traces with filtering and pagination
+- **fetch-observations** - Fetch observations with advanced filtering capabilities
+- **fetch-observation** - Fetch a single observation with complete details
+
+*Use Cases: Performance monitoring, error investigation, cost analysis, quality assessment*
+
+### **Session Analytics** (Safe)
+**Default: Enabled** - User behavior and conversation analysis
+
+- **fetch-sessions** - Fetch user sessions with activity and conversation data
+- **analyze-user-activity** - Analyze user activity patterns and engagement metrics
+
+*Use Cases: User behavior analysis, conversation optimization, engagement tracking, pattern recognition*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared Langfuse project access across team members
+- Organization-level LLM monitoring and governance policies
+- Centralized prompt management and optimization workflows
+- Team-wide cost monitoring and optimization insights
+
+### Personal Setup
+- Individual Langfuse project connections
+- Personal prompt experimentation and analysis
+- Private LLM performance monitoring and debugging
+- Individual cost tracking and optimization
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-Only Access** - All tools are read-only by design for maximum security
+2. **Key Security** - Use dedicated API keys with minimal required permissions
+3. **Instance Security** - Ensure Langfuse instance uses HTTPS and proper authentication
+4. **Data Privacy** - Review data retention and privacy policies for your Langfuse instance
+5. **Access Monitoring** - Monitor API usage and access patterns regularly
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | All Langfuse operations (read-only by design) | ✅ Safe to enable |
+
+## Configuration Management
+
+### Updating Langfuse Connection
+
+1. Navigate to **Integrations** → **Langfuse**
+2. Click **Edit Configuration**
+3. Update public/secret keys or base URL as needed
+4. Test connection to verify changes
+5. Save configuration updates
+
+### Managing Multiple Projects
+
+- Connect separate Langfuse projects for different applications
+- Use different API keys for production vs development environments
+- Configure project-specific monitoring and analysis workflows
+- Maintain separate cost tracking per project
+
+## Advanced Features
+
+### Prompt Intelligence
+- **Version Analysis** - Compare prompt versions and performance metrics
+- **Optimization Insights** - AI-powered prompt improvement suggestions
+- **A/B Testing** - Analyze prompt performance across different versions
+- **Template Management** - Manage prompt templates and variables
+
+### Trace Analytics
+- **Performance Monitoring** - Real-time LLM execution performance tracking
+- **Cost Analysis** - Detailed token usage and cost breakdown by provider
+- **Error Detection** - Automatic identification of failed or problematic traces
+- **Quality Scoring** - Automated quality assessment of LLM outputs
+
+### Session Intelligence
+- **Conversation Flow** - Analyze conversation patterns and user journeys
+- **Engagement Metrics** - Track user engagement and session quality
+- **Behavioral Patterns** - Identify common user behavior patterns
+- **Optimization Opportunities** - Discover areas for conversation improvement
+
+## LLM Observability Workflows
+
+### Performance Monitoring
+- **Real-Time Tracking** - Monitor LLM performance and latency in real-time
+- **Cost Optimization** - Track and optimize token usage across different models
+- **Quality Assurance** - Continuous monitoring of output quality and relevance
+- **Error Analysis** - Identify and analyze LLM execution errors and failures
+
+### Prompt Development
+- **Iterative Optimization** - Track prompt performance improvements over time
+- **Version Management** - Manage prompt versions and deployment strategies
+- **A/B Testing** - Compare different prompt approaches and configurations
+- **Best Practice Discovery** - Identify high-performing prompt patterns
+
+### User Experience Analysis
+- **Conversation Quality** - Analyze conversation effectiveness and user satisfaction
+- **Journey Mapping** - Understand user interaction patterns and preferences
+- **Engagement Optimization** - Optimize conversation flows for better engagement
+- **Personalization Insights** - Discover opportunities for conversation personalization
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify public and secret keys are correct and haven't been revoked
+- Check API key permissions in Langfuse project settings
+- Ensure base URL is correct for your Langfuse instance
+- Verify network connectivity to Langfuse instance
+
+**Project Access Denied**
+- Confirm API keys have access to the target project
+- Check project permissions and user access levels
+- Verify project exists and is accessible
+- Review Langfuse logs for detailed error information
+
+**Data Not Found**
+- Verify data exists in the specified time range
+- Check trace IDs and observation IDs are correct
+- Ensure data collection is active for your application
+- Review data retention policies for your Langfuse instance
+
+**Connection Timeout**
+- Check network connectivity to Langfuse instance
+- Verify Langfuse instance is responsive and healthy
+- Consider increasing timeout settings if using self-hosted instance
+- Review firewall and proxy settings
+
+### Getting Help
+
+1. **Test Connection** - Use the built-in connection test feature
+2. **Update Credentials** - Regenerate API keys if authentication issues persist
+3. **Check Documentation** - Refer to Langfuse official documentation for API setup
+4. **Contact Support** - Reach out to support@getcalmo.com for integration assistance
+
+## Data Types & Analysis
+
+### Prompt Data
+- **Prompt Configurations** - Prompt templates, variables, and version information
+- **Performance Metrics** - Prompt execution success rates and quality scores
+- **Version History** - Complete audit trail of prompt changes and deployments
+- **Usage Analytics** - Prompt usage patterns and frequency analysis
+
+### Trace Data
+- **Execution Traces** - Complete LLM execution flows with timing and performance data
+- **Span Information** - Individual operation details within traces
+- **Cost Metrics** - Token usage and cost breakdown by model and provider
+- **Quality Scores** - Automated and manual quality assessments
+
+### Observation Data
+- **LLM Outputs** - Generated text and response quality metrics
+- **Input Analysis** - Input processing and preparation statistics
+- **Model Performance** - Model-specific performance and accuracy metrics
+- **Error Tracking** - Failed operations and error classification
+
+### Session Data
+- **User Sessions** - Complete user interaction sessions with conversation data
+- **Activity Patterns** - User behavior patterns and engagement metrics
+- **Conversation Flows** - Conversation structure and progression analysis
+- **Engagement Metrics** - Session duration, interaction frequency, and satisfaction
+
+### Analytics Data
+- **Usage Statistics** - Application usage patterns and adoption metrics
+- **Performance Trends** - Long-term performance and quality trends
+- **Cost Optimization** - Cost analysis and optimization recommendations
+- **Quality Insights** - Quality improvement opportunities and best practices
+
+The Langfuse integration provides comprehensive LLM observability capabilities, enabling your team to monitor prompt performance, analyze conversation quality, and optimize LLM operations efficiently through AI-powered assistance while maintaining complete data security.
+
+---
+
+*For additional help with Langfuse integration, contact our support team at support@getcalmo.com.*

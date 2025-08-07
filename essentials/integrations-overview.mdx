@@ -5,7 +5,7 @@ description: 'Understanding how Calmo transforms your development and operations
 
 # Integrations Overview
 
-Calmo transforms your existing development and operations tools into an intelligent, AI-powered workflow engine. Our comprehensive integration platform provides **82+ specialized tools** across **6 major integrations**, enabling your team to solve complex problems through natural conversation.
+Calmo transforms your existing development and operations tools into an intelligent, AI-powered workflow engine. Our comprehensive integration platform provides **154+ specialized tools** across **13 major integrations**, enabling your team to solve complex problems through natural conversation.
 
 ## Key Challenges Solved
 
@@ -20,7 +20,7 @@ Calmo integrates with your existing tools to solve critical challenges:
 
 ## Available Integrations
 
-### 🔧 **Infrastructure & Operations**
+### **Infrastructure & Operations**
 
 #### Kubernetes Integration
 **15+ tools across 5 categories** - Complete container orchestration management
@@ -43,7 +43,29 @@ Calmo integrates with your existing tools to solve critical challenges:
 
 *Use Cases: Performance monitoring, error investigation, capacity planning, incident response*
 
-### 🚨 **Incident Management**
+#### SigNoz Integration
+**9 tools across 4 categories** - Open-source observability and APM platform
+- **Dashboard Management** - Complete dashboard lifecycle management and data visualization
+- **APM & Metrics** - Application performance monitoring with distributed tracing
+- **Data Analysis** - Advanced ClickHouse SQL queries and trace/log investigation
+- **Connection & Setup** - Configuration verification and connectivity testing
+
+*Use Cases: APM monitoring, distributed tracing, custom analytics, open-source observability*
+
+#### Grafana Integration
+**26 tools across 8 categories** - Comprehensive monitoring and visualization
+- **Dashboard Management** - Search, view, and analyze Grafana dashboards
+- **Data Sources** - Manage and query Prometheus, Loki, and other datasources
+- **Prometheus Querying** - Execute PromQL queries and retrieve metadata
+- **Loki Querying** - Query logs and metrics using LogQL
+- **Alerting** - View alert rules and their statuses
+- **Incident Management** - Manage incidents in Grafana Incident
+- **OnCall Management** - Manage on-call schedules and users
+- **Admin & Teams** - View and manage teams
+
+*Use Cases: Multi-datasource monitoring, alerting, incident response, on-call management*
+
+### **Incident Management**
 
 #### PagerDuty Integration
 **Comprehensive tools across 6 categories** - End-to-end incident response
@@ -65,7 +87,7 @@ Calmo integrates with your existing tools to solve critical challenges:
 
 *Use Cases: Automated incident updates, collaborative troubleshooting, knowledge sharing*
 
-### 🛠️ **Development & Code Management**
+### **Development & Code Management**
 
 #### GitHub Integration
 **26 tools across 7 categories** - Complete development workflow automation
@@ -89,33 +111,90 @@ Calmo integrates with your existing tools to solve critical challenges:
 
 *Use Cases: Error investigation, performance debugging, user experience optimization*
 
+### **Data & Analytics**
+
+#### Databricks Integration
+**10 tools across 4 categories** - Data platform operations and analytics
+- **Cluster Management** - List, create, terminate, and start compute clusters
+- **Job Management** - Execute and monitor Databricks jobs
+- **Notebook Operations** - Access and export workspace notebooks
+- **Data Operations** - Query data and browse DBFS files
+
+*Use Cases: Data platform management, analytics workflows, cluster optimization, job monitoring*
+
+#### Redshift Integration
+**3 tools across 3 categories** - Data warehouse analytics and insights
+- **Querying** - Execute read-only SQL queries against Redshift
+- **Schema Inspection** - Get detailed information about specific tables
+- **Column Search** - Find tables containing columns with specific patterns
+
+*Use Cases: Data warehouse analytics, schema exploration, business intelligence, data discovery*
+
+#### S3 Integration
+**3 tools across 2 categories** - Object storage management and data operations
+- **Buckets** - List all S3 buckets with metadata
+- **Objects** - List and retrieve objects from buckets
+
+*Use Cases: Object storage management, data retrieval, backup verification, content analysis*
+
+### **LLM & AI Operations**
+
+#### Langfuse Integration
+**9 tools across 3 categories** - LLM observability and prompt management
+- **Prompt Management** - Manage and retrieve prompts with version control
+- **Trace & Observations** - Analyze LLM execution traces and performance
+- **Session Analytics** - Session analysis and user activity monitoring
+
+*Use Cases: LLM performance monitoring, prompt optimization, conversation analytics, cost tracking*
+
+### **Productivity & Knowledge Management**
+
+#### Notion Integration
+**24 tools across 7 categories** - Workspace data access and knowledge management
+- **Users** - Manage and retrieve Notion users
+- **Databases** - Query, update, and retrieve databases
+- **Pages** - Work with Notion pages and content
+- **Blocks** - Manipulate Notion blocks and content structure
+- **Comments** - Read and create comments for collaboration
+- **Search** - Search across your Notion workspace
+- **Properties** - Work with page properties and metadata
+
+*Use Cases: Knowledge management, content analysis, team collaboration, documentation automation*
+
 ## Integration Capabilities Matrix
 
 | Integration | Total Tools | Read-Only Tools | Write Operations | Safety Level |
 |-------------|-------------|-----------------|------------------|--------------|
 | **Kubernetes** | 15+ | 8 | 7 | Mixed - High control |
 | **GitHub** | 26 | 15 | 11 | Mixed - Graduated access |
+| **Grafana** | 26 | 22 | 4 | Mostly safe |
+| **Notion** | 24 | 13 | 11 | Mixed - Content management |
 | **Datadog** | 22 | 19 | 3 | Mostly safe |
 | **Sentry** | 11 | 8 | 3 | Mostly safe |
+| **Databricks** | 10 | 5 | 5 | Mixed - Controlled access |
+| **SigNoz** | 9 | 9 | 0 | Safe - Read-only |
+| **Langfuse** | 9 | 9 | 0 | Safe - Read-only |
 | **Slack** | 8 | 5 | 3 | Safe with controls |
+| **Redshift** | 3 | 3 | 0 | Safe - Read-only |
+| **S3** | 3 | 3 | 0 | Safe - Read-only |
 | **PagerDuty** | Multiple | Multiple | Multiple | Mixed - Policy-driven |
-| **Total** | **82+** | **55+** | **27+** | **Configurable** |
+| **Total** | **154+** | **119+** | **47+** | **Configurable** |
 
 ## Security & Safety First
 
-### 🔒 Graduated Access Model
+### Graduated Access Model
 
 **Default Configuration:**
 - ✅ **Read-only tools enabled** - Safe discovery and analysis capabilities
 - ❌ **Write operations disabled** - Require explicit enablement for safety
-- 🔧 **Granular control** - Enable specific tools based on team needs
+- **Granular control** - Enable specific tools based on team needs
 
 **Permission Levels:**
 - **Low Risk** - Read operations, discovery, analysis (Always safe to enable)
 - **Medium Risk** - Limited write operations, updates (Enable with review)
 - **High Risk** - Destructive operations, configuration changes (Enable only when necessary)
 
-### 🛡️ Enterprise-Grade Controls
+### Enterprise-Grade Controls
 
 - **Team vs Personal Context** - Separate configurations for organization and individual use
 - **Role-Based Access** - Different permission levels based on team roles
@@ -137,12 +216,19 @@ Calmo integrates with your existing tools to solve critical challenges:
 **For Development Teams:**
 - Start with **GitHub** for code analysis and repository management
 - Add **Sentry** for error monitoring and debugging workflows
+- Include **Notion** for documentation and knowledge management
 - Integrate **Slack** for collaborative development and incident response
 
 **For Operations Teams:**
-- Begin with **Datadog** for observability and monitoring analysis
+- Begin with **Datadog**, **SigNoz**, or **Grafana** for observability and monitoring analysis
 - Add **Kubernetes** for infrastructure management and troubleshooting
 - Include **PagerDuty** for incident response and on-call optimization
+
+**For Data Teams:**
+- Start with **Databricks** for data platform operations and analytics
+- Add **Redshift** for data warehouse analysis and reporting
+- Include **S3** for object storage management and data operations
+- Integrate **Langfuse** for LLM observability and optimization
 
 **For DevOps Teams:**
 - Implement **full integration suite** for comprehensive coverage
@@ -152,16 +238,18 @@ Calmo integrates with your existing tools to solve critical challenges:
 ## Advanced Workflows
 
 ### Cross-Integration Intelligence
-- **Incident Correlation** - Link alerts across Datadog, PagerDuty, and Slack
+- **Incident Correlation** - Link alerts across Datadog, Grafana, PagerDuty, and Slack
 - **Code-to-Production Tracking** - Connect GitHub changes to operational metrics
 - **Error Impact Analysis** - Correlate Sentry errors with infrastructure performance
 - **Automated Response** - Trigger Kubernetes operations based on monitoring alerts
+- **Data Pipeline Monitoring** - Track data flows from S3 through Databricks to Redshift
 
 ### AI-Powered Workflows
 - **Intelligent Escalation** - Smart routing based on expertise and availability
 - **Pattern Recognition** - Learn from historical data across all integrations
 - **Predictive Analysis** - Anticipate issues before they become critical
 - **Knowledge Synthesis** - Combine insights from multiple tools for comprehensive understanding
+- **Cost Optimization** - Analyze and optimize costs across cloud and data platforms
 
 ## Support & Resources
 

@@ -1,0 +1,274 @@
+---
+title: 'Databricks'
+description: 'Connect Calmo to Databricks for comprehensive data platform operations and analytics through AI assistance'
+icon: 'database'
+---
+
+# Databricks Integration
+
+Connect Calmo to your Databricks workspace to enable comprehensive data platform operations and analytics through AI assistance. This integration provides access to **10 specialized tools** across **4 categories** for complete data platform workflows.
+
+## Overview & Value Proposition
+
+The Databricks integration transforms how your team handles data platform operations by providing:
+
+- **Intelligent Cluster Management** - AI-powered cluster lifecycle management with automatic scaling recommendations
+- **Advanced Job Operations** - Comprehensive job execution and monitoring with intelligent retry logic
+- **Notebook Intelligence** - Enhanced notebook discovery and export capabilities with content analysis
+- **Data Operations** - SQL query execution and DBFS file management with optimization suggestions
+- **Safe Operations** - Read-only tools enabled by default with controlled write access for cluster and job management
+
+## Key Capabilities
+
+When connected, Calmo gains access to **10 Databricks tools** across **4 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Cluster Management** | 4 tools | List, create, terminate, and start compute clusters |
+| **Job Management** | 2 tools | Execute and monitor Databricks jobs |
+| **Notebook Operations** | 2 tools | Access and export workspace notebooks |
+| **Data Operations** | 2 tools | Query data and browse DBFS files |
+
+## Prerequisites
+
+- Databricks workspace with appropriate access permissions
+- Admin access to generate personal access tokens
+- Calmo account with team or personal workspace
+
+## Setup Process
+
+### Step 1: Access Your Databricks Workspace
+
+**Locate Your Workspace URL:**
+1. Navigate to your Databricks workspace
+2. Note your workspace URL (e.g., `https://your-workspace.cloud.databricks.com`)
+3. Ensure you have admin or developer access to the workspace
+
+### Step 2: Generate Personal Access Token
+
+**Create Personal Access Token:**
+1. Go to your Databricks workspace
+2. Click on your username in the top right corner
+3. Select "User Settings"
+4. Navigate to the "Access tokens" tab
+5. Click "Generate new token"
+6. Configure token settings:
+   - **Comment**: "Calmo Integration"
+   - **Lifetime**: Set appropriate expiration (recommended: 90 days)
+7. Copy the generated token immediately
+
+**Important Security Notes:**
+- Store the token securely - you won't be able to see it again
+- Use tokens with minimal required permissions
+- Regularly rotate tokens according to security policies
+
+### Step 3: Connect to Calmo
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Databricks** integration
+3. Enter your **Workspace URL** (including protocol: https://)
+4. Enter your **Personal Access Token**
+5. Configure tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+6. Test the connection
+7. Complete the integration setup
+
+## Tool Categories & Configuration
+
+### **Cluster Management** (Mixed Safety)
+**Default: Read operations enabled** - Compute cluster lifecycle management
+
+**Read Operations (✅ Enabled by default):**
+- **databricks_list_clusters** - List all available Databricks clusters in your workspace
+
+**Write Operations (⚠️ Disabled by default):**
+- **databricks_create_cluster** - Create new compute clusters with specified configurations
+- **databricks_terminate_cluster** - Terminate running clusters to save costs
+- **databricks_start_cluster** - Start terminated clusters when needed
+
+*Use Cases: Cluster monitoring, cost optimization, capacity planning, development environment management*
+
+### **Job Management** (Mixed Safety)
+**Default: Read operations enabled** - Job execution and monitoring
+
+**Read Operations (✅ Enabled by default):**
+- **databricks_list_jobs** - List all scheduled and on-demand jobs in your workspace
+
+**Write Operations (⚠️ Disabled by default):**
+- **databricks_run_job** - Execute Databricks jobs with parameters
+
+*Use Cases: Job monitoring, pipeline execution, workflow automation, job troubleshooting*
+
+### **Notebook Operations** (Safe)
+**Default: Enabled** - Workspace notebook management
+
+- **databricks_list_notebooks** - Browse notebooks in your workspace directories
+- **databricks_export_notebook** - Export notebook content in various formats
+
+*Use Cases: Code discovery, notebook backup, content analysis, documentation generation*
+
+### **Data Operations** (Safe)
+**Default: Enabled** - Data analysis and file management
+
+- **databricks_execute_sql** - Execute SQL queries on your data warehouse
+- **databricks_list_files** - Browse files in Databricks File System (DBFS)
+
+*Use Cases: Data exploration, ad-hoc analysis, file management, data validation*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared Databricks workspace access across team members
+- Organization-level data governance and cluster policies
+- Centralized job scheduling and monitoring workflows
+- Team administrators control cluster creation and job execution permissions
+
+### Personal Setup
+- Individual Databricks workspace connections
+- Personal notebook development and experimentation
+- Private data analysis and exploration
+- Full control over enabled tool capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-First Approach** - Begin with read-only tools, monitor usage patterns
+2. **Token Security** - Use dedicated tokens with minimal required permissions
+3. **Workspace URL Validation** - Ensure workspace URL uses HTTPS and is correct
+4. **Cluster Management** - Enable cluster creation/termination only when necessary
+5. **Cost Monitoring** - Monitor cluster usage to prevent unexpected costs
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | List clusters/jobs, browse notebooks, execute queries | ✅ Safe to enable |
+| **Medium** | Export notebooks, browse DBFS files | ✅ Generally safe |
+| **High** | Create/terminate clusters, run jobs | ⚠️ Enable with caution |
+
+## Configuration Management
+
+### Updating Databricks Connection
+
+1. Navigate to **Integrations** → **Databricks**
+2. Click **Edit Configuration**
+3. Update workspace URL or personal access token as needed
+4. Modify tool permissions based on team requirements
+5. Test connection to verify changes
+6. Save configuration updates
+
+### Managing Multiple Workspaces
+
+- Connect separate Databricks workspaces for different environments
+- Use different access tokens for production vs development
+- Configure environment-specific cluster and job policies
+- Maintain separate data governance workflows per workspace
+
+## Advanced Features
+
+### Cluster Lifecycle Management
+- **Intelligent Provisioning** - AI-powered cluster size recommendations
+- **Cost Optimization** - Automated cluster termination suggestions
+- **Multi-Environment Support** - Separate cluster configurations per environment
+- **Performance Monitoring** - Cluster utilization analysis and optimization
+
+### Job Orchestration
+- **Workflow Automation** - Intelligent job scheduling and dependency management
+- **Parameter Management** - Dynamic parameter injection for job execution
+- **Error Handling** - Automated retry logic and failure analysis
+- **Performance Optimization** - Job execution time analysis and optimization
+
+### Data Analytics Integration
+- **SQL Intelligence** - Query optimization and performance analysis
+- **Schema Discovery** - Automatic data structure analysis
+- **Data Quality** - Automated data validation and quality checks
+- **Visualization Support** - Integration with existing dashboard tools
+
+## Data Platform Workflows
+
+### Development & Testing
+- **Environment Management** - Automated development cluster provisioning
+- **Code Validation** - Notebook execution and testing workflows
+- **Data Pipeline Development** - ETL job creation and testing
+- **Performance Testing** - Load testing and optimization analysis
+
+### Production Operations
+- **Job Monitoring** - Production job health and performance tracking
+- **Cluster Optimization** - Resource utilization and cost management
+- **Data Quality Assurance** - Automated data validation pipelines
+- **Incident Response** - Failed job analysis and remediation
+
+### Analytics & Insights
+- **Ad-Hoc Analysis** - Interactive SQL query execution
+- **Data Exploration** - Intelligent data discovery and profiling
+- **Reporting Automation** - Scheduled report generation and distribution
+- **Business Intelligence** - Integration with BI tools and dashboards
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify personal access token is correct and hasn't expired
+- Check workspace URL format and accessibility
+- Ensure token has required permissions for enabled tools
+- Verify network connectivity to Databricks workspace
+
+**Workspace Access Denied**
+- Confirm user has appropriate workspace access level
+- Check if workspace has IP access restrictions
+- Verify token scope includes necessary workspace permissions
+- Contact workspace administrator for access verification
+
+**Cluster Operations Failed**
+- Verify cluster policies allow requested operations
+- Check workspace compute quotas and limits
+- Ensure sufficient permissions for cluster management
+- Review workspace configuration and restrictions
+
+**Job Execution Issues**
+- Verify job exists and is accessible with current permissions
+- Check job configuration and parameter requirements
+- Ensure cluster resources are available for job execution
+- Review job history and error logs for detailed diagnostics
+
+### Getting Help
+
+1. **Test Connection** - Use the built-in connection test feature
+2. **Update Credentials** - Regenerate personal access token if authentication issues persist
+3. **Check Documentation** - Refer to Databricks official documentation for workspace setup
+4. **Contact Support** - Reach out to support@getcalmo.com for integration assistance
+
+## Data Types & Analysis
+
+### Cluster Data
+- **Cluster Configurations** - Instance types, autoscaling settings, runtime versions
+- **Performance Metrics** - CPU, memory, disk utilization and performance data
+- **Cost Analytics** - Cluster usage costs and optimization recommendations
+- **Lifecycle Events** - Cluster creation, termination, and state change history
+
+### Job Data
+- **Job Definitions** - Job configurations, schedules, and parameter specifications
+- **Execution History** - Job run history, success rates, and performance metrics
+- **Dependencies** - Job dependency graphs and workflow relationships
+- **Error Analytics** - Failed job analysis and troubleshooting insights
+
+### Notebook Data
+- **Content Analysis** - Code structure, documentation, and complexity metrics
+- **Execution History** - Notebook run history and cell execution patterns
+- **Collaboration Data** - Sharing permissions and collaborative editing history
+- **Version Control** - Notebook version history and change tracking
+
+### Data Assets
+- **DBFS File System** - File structure, metadata, and access patterns
+- **SQL Query Results** - Query execution results and performance metrics
+- **Data Schemas** - Table structures, column definitions, and relationships
+- **Data Quality** - Data profiling results and quality assessment metrics
+
+The Databricks integration provides comprehensive data platform capabilities, enabling your team to manage clusters, execute jobs, and analyze data efficiently through AI-powered assistance while maintaining strict operational controls and cost optimization.
+
+---
+
+*For additional help with Databricks integration, contact our support team at support@getcalmo.com.*

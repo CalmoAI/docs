@@ -1,0 +1,271 @@
+---
+title: 'Redshift'
+description: 'Connect Calmo to Redshift for comprehensive data warehouse analytics and insights through AI assistance'
+icon: 'database'
+---
+
+# Redshift Integration
+
+Connect Calmo to your Amazon Redshift data warehouse to enable comprehensive analytics and insights through AI assistance. This integration provides access to **3 specialized tools** across **3 categories** for complete data warehouse analysis and exploration workflows.
+
+## Overview & Value Proposition
+
+The Redshift integration transforms how your team handles data warehouse operations by providing:
+
+- **Intelligent SQL Querying** - AI-powered query optimization and result analysis
+- **Advanced Schema Inspection** - Comprehensive table structure analysis and documentation
+- **Smart Column Discovery** - Efficient data exploration and column-based searches
+- **Cost-Effective Operations** - Read-only access to prevent accidental data modifications
+- **Performance Optimization** - Query performance insights and optimization recommendations
+- **Safe Operations** - All tools are read-only for maximum data security
+
+## Key Capabilities
+
+When connected, Calmo gains access to **3 Redshift tools** across **3 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Querying** | 1 tool | Execute read-only SQL queries against Redshift |
+| **Schema Inspection** | 1 tool | Get detailed information about specific tables |
+| **Column Search** | 1 tool | Find tables containing columns with specific patterns |
+
+## Prerequisites
+
+- Amazon Redshift cluster with network accessibility
+- Database credentials with read access permissions
+- Redshift connection string or connection parameters
+- Calmo account with team or personal workspace
+
+## Setup Process
+
+### Step 1: Prepare Redshift Access
+
+**Gather Connection Information:**
+1. Identify your Redshift cluster endpoint
+2. Note the database name, port, and region
+3. Ensure network security groups allow connections from Calmo
+4. Verify SSL/TLS configuration if required
+
+**Connection String Format:**
+```
+postgresql://username:password@host:port/database
+```
+
+Example:
+```
+postgresql://analytics_user:password123@my-cluster.abc123.us-east-1.redshift.amazonaws.com:5439/analytics_db
+```
+
+### Step 2: Create Database User (Recommended)
+
+**Create Dedicated User:**
+```sql
+-- Create a dedicated user for Calmo integration
+CREATE USER calmo_user PASSWORD 'secure_password_here';
+
+-- Grant necessary permissions for read-only access
+GRANT USAGE ON SCHEMA public TO calmo_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO calmo_user;
+
+-- Grant permissions for schema inspection
+GRANT USAGE ON SCHEMA information_schema TO calmo_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA information_schema TO calmo_user;
+
+-- For specific schemas, replace 'public' with your schema names
+GRANT USAGE ON SCHEMA your_schema_name TO calmo_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA your_schema_name TO calmo_user;
+```
+
+**Security Best Practices:**
+- Use a dedicated user account for the integration
+- Grant only necessary read permissions
+- Use strong passwords and rotate them regularly
+- Consider using IAM authentication for enhanced security
+
+### Step 3: Connect to Calmo
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Redshift** integration
+3. Enter your **Connection String** (including credentials)
+4. Configure tool permissions:
+   - ✅ **All operations are read-only** by design
+   - ✅ **All tools enabled by default** for comprehensive data access
+5. Test the connection using the built-in connection test
+6. Complete the integration setup
+
+## Tool Categories & Configuration
+
+### **Querying** (Safe)
+**Default: Enabled** - Essential for data analysis and exploration
+
+- **redshift_query** - Execute read-only SQL queries against your Redshift data warehouse
+
+*Use Cases: Data analysis, reporting, ad-hoc queries, business intelligence, data validation*
+
+### **Schema Inspection** (Safe)
+**Default: Enabled** - Database structure analysis and documentation
+
+- **redshift_describe_table** - Get detailed information about a specific table including columns, types, and constraints
+
+*Use Cases: Data discovery, schema documentation, data modeling, table analysis*
+
+### **Column Search** (Safe)
+**Default: Enabled** - Efficient data exploration and discovery
+
+- **redshift_find_column** - Find tables containing columns with specific name patterns
+
+*Use Cases: Data lineage, column discovery, schema exploration, data governance*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared Redshift cluster access across team members
+- Organization-level data governance and access policies
+- Centralized query execution and analysis workflows
+- Team-wide data insights and reporting capabilities
+
+### Personal Setup
+- Individual Redshift cluster connections
+- Personal data analysis and exploration
+- Private query development and testing
+- Individual data discovery and research
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-Only Access** - All tools are read-only by design for maximum security
+2. **Dedicated User** - Use a dedicated database user for the integration
+3. **Minimal Permissions** - Grant only necessary read permissions to required schemas
+4. **Connection Security** - Use SSL/TLS encryption for database connections
+5. **Network Security** - Ensure proper security group and firewall configurations
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | All Redshift operations (read-only by design) | ✅ Safe to enable |
+
+## Configuration Management
+
+### Updating Redshift Connection
+
+1. Navigate to **Integrations** → **Redshift**
+2. Click **Edit Configuration**
+3. Update connection string if credentials or endpoint change
+4. Test connection to verify changes
+5. Save configuration updates
+
+### Managing Multiple Clusters
+
+- Connect separate Redshift clusters for different environments
+- Use different database users for production vs development
+- Configure environment-specific data access policies
+- Maintain separate analytics workflows per cluster
+
+## Advanced Features
+
+### Query Intelligence
+- **SQL Optimization** - AI-powered query optimization suggestions
+- **Performance Analysis** - Query execution time and resource usage analysis
+- **Result Interpretation** - Intelligent analysis and summarization of query results
+- **Cost Estimation** - Query cost estimation and optimization recommendations
+
+### Schema Discovery
+- **Automated Documentation** - Generate documentation from schema analysis
+- **Data Lineage** - Trace data relationships and dependencies
+- **Schema Comparison** - Compare schemas across different environments
+- **Data Quality Assessment** - Analyze data quality and completeness
+
+### Data Exploration
+- **Smart Recommendations** - Suggest relevant tables and columns based on queries
+- **Pattern Recognition** - Identify data patterns and anomalies
+- **Relationship Discovery** - Discover relationships between tables and columns
+- **Business Context** - Add business context to technical data structures
+
+## Data Analytics Workflows
+
+### Business Intelligence
+- **Report Generation** - Automated report creation and data extraction
+- **Dashboard Support** - Data preparation for visualization tools
+- **KPI Calculation** - Business metrics calculation and analysis
+- **Trend Analysis** - Historical data analysis and trend identification
+
+### Data Exploration
+- **Exploratory Analysis** - Interactive data exploration and discovery
+- **Data Profiling** - Comprehensive data quality and structure analysis
+- **Schema Navigation** - Efficient navigation of complex database schemas
+- **Column Analytics** - Column-level statistics and data distribution analysis
+
+### Performance Optimization
+- **Query Performance** - Analyze and optimize query execution performance
+- **Resource Usage** - Monitor resource consumption and optimization opportunities
+- **Indexing Insights** - Identify opportunities for performance improvements
+- **Cost Management** - Analyze and optimize data warehouse costs
+
+## Troubleshooting
+
+### Common Issues
+
+**Connection Failed**
+- Verify connection string format and credentials
+- Check network connectivity and security group settings
+- Ensure Redshift cluster is running and accessible
+- Verify SSL/TLS configuration if required
+
+**Authentication Failed**
+- Confirm database username and password are correct
+- Check user permissions and access rights
+- Verify user exists and is not locked or expired
+- Review password policy and character restrictions
+
+**Permission Denied**
+- Confirm user has SELECT permissions on target tables
+- Check schema access permissions
+- Verify information_schema access for metadata queries
+- Review role memberships and inherited permissions
+
+**Query Timeout**
+- Check query complexity and data volume
+- Verify cluster performance and resource availability
+- Consider optimizing query for better performance
+- Review Redshift cluster configuration and scaling
+
+### Getting Help
+
+1. **Test Connection** - Use the built-in connection test feature
+2. **Update Credentials** - Update connection string if credentials change
+3. **Check Documentation** - Refer to Amazon Redshift documentation for setup issues
+4. **Contact Support** - Reach out to support@getcalmo.com for integration assistance
+
+## Data Types & Analysis
+
+### Query Results
+- **Structured Data** - Query results with full data type preservation
+- **Performance Metrics** - Query execution time, rows processed, and resource usage
+- **Result Analysis** - Automated analysis and insights from query results
+- **Data Export** - Query results in various formats for further analysis
+
+### Schema Information
+- **Table Metadata** - Table definitions, column types, constraints, and indexes
+- **Relationship Data** - Foreign key relationships and table dependencies
+- **Data Statistics** - Row counts, data distributions, and table sizes
+- **Schema Evolution** - Track schema changes and version history
+
+### Column Discovery
+- **Column Metadata** - Column names, types, constraints, and descriptions
+- **Usage Patterns** - Column usage frequency and access patterns
+- **Data Quality** - Column-level data quality and completeness metrics
+- **Business Context** - Business meaning and context for technical columns
+
+### Performance Data
+- **Execution Statistics** - Query performance metrics and resource utilization
+- **Optimization Opportunities** - Performance improvement recommendations
+- **Cost Analysis** - Query cost analysis and optimization suggestions
+- **Resource Usage** - Cluster resource utilization and capacity planning
+
+The Redshift integration provides comprehensive data warehouse analytics capabilities, enabling your team to query data, explore schemas, and discover insights efficiently through AI-powered assistance while maintaining strict read-only access for maximum security.
+
+---
+
+*For additional help with Redshift integration, contact our support team at support@getcalmo.com.*

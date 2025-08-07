@@ -1,0 +1,286 @@
+---
+title: 'S3'
+description: 'Connect Calmo to S3 for comprehensive object storage management and data operations through AI assistance'
+icon: 'cloud'
+---
+
+# S3 Integration
+
+Connect Calmo to your S3-compatible object storage to enable object storage management and data operations through AI assistance. This integration provides access to **3 specialized tools** across **2 categories** for complete object storage workflows.
+
+## Overview & Value Proposition
+
+The S3 integration transforms how your team handles object storage operations by providing:
+
+- **Intelligent Bucket Management** - AI-powered bucket discovery and analysis
+- **Advanced Object Operations** - Comprehensive object listing and retrieval with metadata analysis
+- **Multi-Provider Support** - Compatible with AWS S3, MinIO, and other S3-compatible services
+- **Cost-Effective Operations** - Efficient object access with intelligent caching and optimization
+- **Flexible Configuration** - Support for custom endpoints, regions, and bucket restrictions
+- **Safe Operations** - All tools are read-only for maximum data security
+
+## Key Capabilities
+
+When connected, Calmo gains access to **3 S3 tools** across **2 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Buckets** | 1 tool | List all S3 buckets with metadata |
+| **Objects** | 2 tools | List and retrieve objects from buckets |
+
+## Prerequisites
+
+- S3-compatible storage service (AWS S3, MinIO, etc.)
+- Access credentials with appropriate permissions
+- Network access to the S3 endpoint
+- Calmo account with team or personal workspace
+
+## Setup Process
+
+### Step 1: Prepare S3 Access
+
+**Gather Required Information:**
+1. **Endpoint URL**: Your S3 service endpoint
+   - AWS S3: `https://s3.amazonaws.com` or regional endpoint
+   - MinIO: `https://your-minio-instance.com`
+   - Other S3-compatible: Custom endpoint URL
+2. **Access Key**: S3 access key ID
+3. **Secret Key**: S3 secret access key
+4. **Region** (optional): Target region for operations
+5. **Buckets** (optional): Comma-separated list of specific buckets to access
+
+### Step 2: Configure Access Permissions
+
+**AWS S3 - IAM Policy Example:**
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:GetObjectMetadata"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*",
+                "arn:aws:s3:::your-bucket-name/*"
+            ]
+        }
+    ]
+}
+```
+
+**MinIO - Policy Example:**
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket",
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        }
+    ]
+}
+```
+
+**Required Permissions:**
+- `s3:ListAllMyBuckets` - List all accessible buckets
+- `s3:ListBucket` - List objects within buckets
+- `s3:GetObject` - Retrieve object content and metadata
+
+### Step 3: Connect to Calmo
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **S3** integration
+3. Enter your connection details:
+   - **S3 Endpoint**: Your S3 service endpoint URL
+   - **Access Key**: Your S3 access key ID
+   - **Secret Key**: Your S3 secret access key
+   - **Region** (optional): Target region for operations
+   - **Buckets** (optional): Specific buckets to restrict access to
+4. Configure tool permissions:
+   - ✅ **All operations are read-only** by design
+   - ✅ **All tools enabled by default** for comprehensive storage access
+5. Test the connection using the built-in connection test
+6. Complete the integration setup
+
+## Tool Categories & Configuration
+
+### **Buckets** (Safe)
+**Default: Enabled** - Essential for bucket discovery and management
+
+- **list-s3-buckets** - List all S3 buckets with metadata including creation date and location
+
+*Use Cases: Bucket inventory, storage organization, capacity planning, access validation*
+
+### **Objects** (Safe)
+**Default: Enabled** - Object discovery and retrieval operations
+
+- **list-s3-objects** - List objects in a bucket with metadata including size, modified date, and storage class
+- **get-s3-object** - Retrieve an object from a bucket including content and metadata
+
+*Use Cases: Data discovery, file management, content analysis, backup verification*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared S3 storage access across team members
+- Organization-level data governance and access policies
+- Centralized object storage management and monitoring
+- Team-wide data access and analysis capabilities
+
+### Personal Setup
+- Individual S3 storage connections
+- Personal data analysis and file management
+- Private object storage exploration
+- Individual backup and data retrieval needs
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Read-Only Access** - All tools are read-only by design for maximum security
+2. **Minimal Permissions** - Grant only necessary read permissions to required buckets
+3. **Access Key Security** - Use dedicated access keys with limited scope
+4. **Endpoint Security** - Ensure S3 endpoints use HTTPS encryption
+5. **Bucket Restrictions** - Limit access to specific buckets when possible
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | All S3 operations (read-only by design) | ✅ Safe to enable |
+
+## Configuration Management
+
+### Updating S3 Connection
+
+1. Navigate to **Integrations** → **S3**
+2. Click **Edit Configuration**
+3. Update endpoint, credentials, or bucket restrictions as needed
+4. Test connection to verify changes
+5. Save configuration updates
+
+### Managing Multiple Storage Systems
+
+- Connect separate S3 instances for different environments
+- Use different access keys for production vs development
+- Configure environment-specific bucket access policies
+- Maintain separate storage workflows per system
+
+## Advanced Features
+
+### Multi-Provider Support
+- **AWS S3** - Full compatibility with Amazon S3 service
+- **MinIO** - Complete support for MinIO object storage
+- **S3-Compatible Services** - Support for any S3-compatible storage service
+- **Flexible Endpoints** - Custom endpoint configuration for various providers
+
+### Object Intelligence
+- **Metadata Analysis** - Comprehensive object metadata analysis and insights
+- **Content Classification** - AI-powered content type detection and classification
+- **Storage Optimization** - Storage class recommendations and cost optimization
+- **Access Pattern Analysis** - Object access pattern analysis and optimization
+
+### Bucket Management
+- **Inventory Management** - Comprehensive bucket and object inventory
+- **Capacity Analysis** - Storage usage analysis and capacity planning
+- **Organization Insights** - Bucket organization and structure optimization
+- **Cost Analysis** - Storage cost analysis and optimization recommendations
+
+## Object Storage Workflows
+
+### Data Discovery
+- **Content Exploration** - Intelligent exploration of object storage contents
+- **File Organization** - Analysis of file organization and structure patterns
+- **Duplicate Detection** - Identification of duplicate objects and optimization opportunities
+- **Data Classification** - Automated classification of stored data by type and content
+
+### Backup and Recovery
+- **Backup Verification** - Validate backup integrity and completeness
+- **Recovery Planning** - Analyze backup structure for recovery planning
+- **Version Management** - Track object versions and retention policies
+- **Disaster Recovery** - Support disaster recovery planning and validation
+
+### Analytics and Reporting
+- **Usage Analytics** - Comprehensive storage usage analysis and reporting
+- **Performance Monitoring** - Object access performance and optimization
+- **Cost Management** - Storage cost tracking and optimization recommendations
+- **Compliance Reporting** - Generate compliance reports for data governance
+
+## Troubleshooting
+
+### Common Issues
+
+**Connection Failed**
+- Verify endpoint URL is correct and accessible
+- Check access key and secret key credentials
+- Ensure network connectivity to S3 endpoint
+- Verify SSL/TLS configuration if using HTTPS
+
+**Authentication Failed**
+- Confirm access key and secret key are correct
+- Check IAM permissions for S3 operations
+- Verify credentials haven't expired or been revoked
+- Review access key status in IAM console (for AWS)
+
+**Bucket Access Denied**
+- Confirm bucket exists and is accessible
+- Check bucket permissions and access policies
+- Verify region configuration matches bucket location
+- Review bucket-level access restrictions
+
+**Object Not Found**
+- Verify object key and path are correct
+- Check object exists in the specified bucket
+- Confirm object hasn't been deleted or moved
+- Review object-level access permissions
+
+### Getting Help
+
+1. **Test Connection** - Use the built-in connection test feature
+2. **Update Credentials** - Update access credentials if authentication issues persist
+3. **Check Documentation** - Refer to your S3 provider's documentation for setup issues
+4. **Contact Support** - Reach out to support@getcalmo.com for integration assistance
+
+## Data Types & Analysis
+
+### Bucket Data
+- **Bucket Metadata** - Bucket information including creation date, location, and access policies
+- **Storage Statistics** - Bucket storage usage, object counts, and capacity metrics
+- **Access Patterns** - Bucket access frequency and usage patterns
+- **Configuration Data** - Bucket settings, versioning, and lifecycle policies
+
+### Object Data
+- **Object Metadata** - Object information including size, modification date, and storage class
+- **Content Analysis** - Object content type detection and classification
+- **Access History** - Object access patterns and download statistics
+- **Version Information** - Object version history and retention data
+
+### Storage Analytics
+- **Usage Metrics** - Comprehensive storage usage analysis and trends
+- **Cost Analytics** - Storage cost breakdown and optimization opportunities
+- **Performance Data** - Object access performance and transfer metrics
+- **Optimization Insights** - Storage optimization recommendations and best practices
+
+### Security Information
+- **Access Permissions** - Object and bucket access permissions and policies
+- **Encryption Status** - Object encryption status and key management
+- **Access Logs** - Access logging and audit trail information
+- **Compliance Data** - Data retention and compliance status information
+
+The S3 integration provides comprehensive object storage management capabilities, enabling your team to explore buckets, analyze objects, and optimize storage efficiently through AI-powered assistance while maintaining strict read-only access for maximum security.
+
+---
+
+*For additional help with S3 integration, contact our support team at support@getcalmo.com.*

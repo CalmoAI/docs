@@ -1,0 +1,337 @@
+---
+title: 'Grafana'
+description: 'Connect Calmo to Grafana for comprehensive monitoring, alerting, and visualization through AI assistance'
+icon: 'chart-line'
+---
+
+# Grafana Integration
+
+Connect Calmo to your Grafana instance to enable monitoring, alerting, and visualization through AI assistance. This integration provides access to **26 specialized tools** across **8 categories** for complete observability and incident management workflows.
+
+## Overview & Value Proposition
+
+The Grafana integration transforms how your team handles monitoring and observability by providing:
+
+- **Advanced Dashboard Intelligence** - AI-powered dashboard analysis and panel query optimization
+- **Multi-Source Data Querying** - Direct access to Prometheus, Loki, and other configured datasources
+- **Intelligent Alerting** - Comprehensive alert rule management and status monitoring
+- **Incident Response** - Integrated incident management with Grafana Incident
+- **OnCall Coordination** - Complete on-call schedule and user management with Grafana OnCall
+- **Safe Operations** - Read-only tools enabled by default with controlled write access
+
+## Key Capabilities
+
+When connected, Calmo gains access to **26 Grafana tools** across **8 categories**:
+
+| Category | Tools | Capability |
+|----------|-------|------------|
+| **Dashboard Management** | 3 tools | Search, view, and analyze Grafana dashboards |
+| **Data Sources** | 3 tools | Manage and query Prometheus, Loki, and other datasources |
+| **Prometheus Querying** | 5 tools | Execute PromQL queries and retrieve metadata |
+| **Loki Querying** | 4 tools | Query logs and metrics using LogQL |
+| **Alerting** | 2 tools | View alert rules and their statuses |
+| **Incident Management** | 4 tools | Manage incidents in Grafana Incident |
+| **OnCall Management** | 5 tools | Manage on-call schedules and users |
+| **Admin & Teams** | 1 tool | View and manage teams |
+
+## Prerequisites
+
+- Grafana instance with API access enabled
+- Admin access to create service accounts and API keys
+- Calmo account with team or personal workspace
+
+## Setup Process
+
+### Step 1: Access Your Grafana Instance
+
+**Locate Your Grafana URL:**
+1. Navigate to your Grafana instance
+2. Note your instance URL (e.g., `https://your-grafana-instance.com`)
+3. Ensure API access is enabled on your instance
+
+### Step 2: Create Service Account and API Key
+
+**Create Service Account:**
+1. Log in to your Grafana instance as an administrator
+2. Navigate to **Administration** → **Service accounts**
+3. Click **Add service account**
+4. Configure service account:
+   - **Display name**: "Calmo Integration"
+   - **Role**: Editor or Viewer (based on desired permissions)
+5. Create the service account
+
+**Generate API Key:**
+1. Click on the created service account
+2. Navigate to **Tokens** tab
+3. Click **Add service account token**
+4. Configure token settings:
+   - **Display name**: "Calmo API Token"
+   - **Expiration**: Set appropriate expiration date
+5. Copy the generated token immediately
+
+**Required Permissions by Tool Category:**
+
+| Tool Category | Required Permissions |
+|---------------|---------------------|
+| **Dashboard Management** | `dashboards:read` |
+| **Data Sources** | `datasources:read` |
+| **Prometheus/Loki Querying** | `datasources:query` |
+| **Alerting** | `alert.rules:read` |
+| **Incident Management** | `incidents:read`, `incidents:write` (for creation) |
+| **OnCall Management** | `oncall:read` |
+| **Admin & Teams** | `teams:read` |
+
+### Step 3: Connect to Calmo
+
+1. Navigate to **Integrations** in your Calmo dashboard
+2. Click **Grafana** integration
+3. Enter your **Grafana URL** (including protocol: https://)
+4. Enter your **API Key**
+5. Configure tool permissions:
+   - ✅ **Read-only operations** enabled by default
+   - ❌ **Write operations** disabled for safety
+6. Test the connection using the built-in connection test
+7. Complete the integration setup
+
+## Tool Categories & Configuration
+
+### **Dashboard Management** (Safe)
+**Default: Enabled** - Essential for dashboard analysis and visualization
+
+- **search_dashboards** - Search for dashboards by title or metadata
+- **get_dashboard_by_uid** - Retrieve full dashboard details using unique identifier
+- **get_dashboard_panel_queries** - Get panel queries and datasource info from dashboards
+
+*Use Cases: Dashboard discovery, performance analysis, panel optimization, visualization insights*
+
+### **Data Sources** (Safe)
+**Default: Enabled** - Datasource management and configuration
+
+- **list_datasources** - View all configured datasources
+- **get_datasource_by_uid** - Get datasource details by UID
+- **get_datasource_by_name** - Get datasource details by name
+
+*Use Cases: Datasource inventory, configuration validation, connection testing*
+
+### **Prometheus Querying** (Safe)
+**Default: Enabled** - Direct PromQL query execution and metadata retrieval
+
+- **query_prometheus** - Execute PromQL queries against Prometheus datasources
+- **list_prometheus_metric_metadata** - Retrieve metric metadata from Prometheus
+- **list_prometheus_metric_names** - List available metric names
+- **list_prometheus_label_names** - List label names matching a selector
+- **list_prometheus_label_values** - List values for a specific label
+
+*Use Cases: Metrics analysis, performance monitoring, capacity planning, troubleshooting*
+
+### **Loki Querying** (Safe)
+**Default: Enabled** - LogQL query execution and log analysis
+
+- **query_loki_logs** - Query logs and metrics using LogQL
+- **list_loki_label_names** - List all available label names in logs
+- **list_loki_label_values** - List values for a specific log label
+- **query_loki_stats** - Get statistics about log streams
+
+*Use Cases: Log analysis, error investigation, application debugging, security monitoring*
+
+### **Alerting** (Safe)
+**Default: Enabled** - Alert rule management and monitoring
+
+- **list_alert_rules** - List alert rules and their statuses
+- **get_alert_rule_by_uid** - Get alert rule details by UID
+
+*Use Cases: Alert monitoring, rule validation, alerting optimization, incident correlation*
+
+### **Incident Management** (Mixed Safety)
+**Default: Read operations enabled** - Grafana Incident integration
+
+**Read Operations (✅ Enabled by default):**
+- **list_incidents** - List incidents in Grafana Incident
+
+**Write Operations (⚠️ Disabled by default):**
+- **create_incident** - Create an incident in Grafana Incident
+- **add_activity_to_incident** - Add activity to an incident
+- **resolve_incident** - Resolve an incident
+
+*Use Cases: Incident response, escalation management, post-mortem analysis, team coordination*
+
+### **OnCall Management** (Safe)
+**Default: Enabled** - Grafana OnCall integration
+
+- **list_oncall_schedules** - List schedules from Grafana OnCall
+- **get_oncall_shift** - Get details for a specific OnCall shift
+- **get_current_oncall_users** - Get users currently on-call for a schedule
+- **list_oncall_teams** - List teams from Grafana OnCall
+- **list_oncall_users** - List users from Grafana OnCall
+
+*Use Cases: On-call coordination, schedule management, escalation planning, team availability*
+
+### **Admin & Teams** (Safe)
+**Default: Enabled** - Team and user management
+
+- **list_teams** - View all configured teams in Grafana
+
+*Use Cases: Team organization, user management, access control, collaboration*
+
+## Team vs Personal Configuration
+
+### Team/Organization Setup
+- Shared Grafana instance access across team members
+- Organization-level monitoring policies and alert configurations
+- Centralized incident response and on-call management
+- Team administrators control incident creation and resolution permissions
+
+### Personal Setup
+- Individual Grafana instance connections
+- Personal dashboard preferences and custom queries
+- Private metric analysis and debugging sessions
+- Full control over enabled tool capabilities
+
+## Security & Best Practices
+
+### ⚠️ Safety Recommendations
+
+1. **Service Account Approach** - Use dedicated service accounts instead of personal API keys
+2. **Minimal Permissions** - Grant only necessary permissions for intended use cases
+3. **Token Rotation** - Regularly rotate API tokens according to security policies
+4. **Instance Security** - Ensure Grafana instance uses HTTPS and proper authentication
+5. **Access Monitoring** - Monitor API usage and access patterns
+
+### 🔒 Permission Levels
+
+| Risk Level | Operations | Recommendation |
+|------------|------------|----------------|
+| **Low** | View dashboards, query metrics/logs, read alerts | ✅ Safe to enable |
+| **Medium** | List incidents, view on-call schedules | ✅ Generally safe |
+| **High** | Create incidents, modify alert rules | ⚠️ Enable with caution |
+
+## Configuration Management
+
+### Updating Grafana Connection
+
+1. Navigate to **Integrations** → **Grafana**
+2. Click **Edit Configuration**
+3. Update Grafana URL or API key as needed
+4. Modify tool permissions based on team requirements
+5. Test connection to verify changes
+6. Save configuration updates
+
+### Managing Multiple Environments
+
+- Connect separate Grafana instances for different environments
+- Use different service accounts for production vs development
+- Configure environment-specific monitoring and alerting policies
+- Maintain separate incident response workflows per environment
+
+## Advanced Features
+
+### Multi-Datasource Support
+- **Unified Querying** - Query multiple datasources through single interface
+- **Cross-Datasource Correlation** - Correlate metrics and logs across different sources
+- **Datasource Health Monitoring** - Monitor datasource connectivity and performance
+- **Query Optimization** - Intelligent query optimization across different backends
+
+### Advanced Analytics
+- **Custom PromQL Queries** - Complex metric analysis with advanced aggregations
+- **LogQL Intelligence** - Sophisticated log analysis with pattern recognition
+- **Alert Correlation** - Cross-reference alerts with system events and metrics
+- **Performance Insights** - Automated performance bottleneck detection
+
+### Incident Response Integration
+- **Automated Incident Creation** - AI-powered incident creation based on alert patterns
+- **Escalation Management** - Intelligent escalation based on severity and on-call schedules
+- **Timeline Tracking** - Comprehensive incident timeline with activity logging
+- **Post-Incident Analysis** - Automated post-mortem generation and analysis
+
+## Monitoring Workflows
+
+### Real-Time Monitoring
+- **Live Dashboard Analysis** - Real-time dashboard data analysis and insights
+- **Metric Streaming** - Continuous metric monitoring with anomaly detection
+- **Log Stream Analysis** - Real-time log analysis with pattern recognition
+- **Alert Processing** - Intelligent alert filtering and prioritization
+
+### Incident Response
+- **Alert Correlation** - Automatic correlation of related alerts and incidents
+- **On-Call Coordination** - Intelligent routing based on schedules and expertise
+- **Escalation Automation** - Automated escalation based on response times
+- **Communication Integration** - Seamless integration with communication tools
+
+### Performance Analysis
+- **Capacity Planning** - Resource utilization analysis and capacity recommendations
+- **Performance Trending** - Long-term performance trend analysis
+- **Optimization Insights** - Query and dashboard optimization recommendations
+- **Anomaly Detection** - AI-powered anomaly identification across metrics and logs
+
+## Troubleshooting
+
+### Common Issues
+
+**Authentication Failed**
+- Verify API key is correct and hasn't expired
+- Check service account permissions in Grafana
+- Ensure API access is enabled on Grafana instance
+- Verify network connectivity to Grafana instance
+
+**Datasource Access Denied**
+- Confirm service account has datasource query permissions
+- Check datasource configuration and accessibility
+- Verify datasource health in Grafana interface
+- Review Grafana logs for detailed error information
+
+**Dashboard Not Found**
+- Verify dashboard exists and is accessible with current permissions
+- Check dashboard UID and ensure it's correct
+- Confirm user has read access to target dashboard
+- Review dashboard sharing and permission settings
+
+**Query Execution Failed**
+- Verify datasource is healthy and responsive
+- Check query syntax for PromQL or LogQL compliance
+- Ensure time range is appropriate for data availability
+- Review datasource-specific troubleshooting guides
+
+### Getting Help
+
+1. **Test Connection** - Use the built-in connection test feature
+2. **Update Credentials** - Regenerate API key if authentication issues persist
+3. **Check Documentation** - Refer to Grafana official documentation for API setup
+4. **Contact Support** - Reach out to support@getcalmo.com for integration assistance
+
+## Data Types & Analysis
+
+### Dashboard Data
+- **Dashboard Configurations** - Panel layouts, query definitions, and visualization settings
+- **Panel Analytics** - Query performance, data sources, and refresh patterns
+- **Usage Metrics** - Dashboard access patterns and user interaction data
+- **Performance Data** - Dashboard load times and query execution metrics
+
+### Metrics Data
+- **Time Series Metrics** - Prometheus metrics with full dimensional data
+- **Aggregated Data** - Pre-computed aggregations and rollups
+- **Custom Metrics** - Application-specific and business metrics
+- **Infrastructure Metrics** - System and infrastructure performance data
+
+### Log Data
+- **Structured Logs** - JSON and structured log entries with full context
+- **Unstructured Logs** - Free-form log entries with pattern extraction
+- **Log Metadata** - Log source, timestamp, and classification information
+- **Error Logs** - Exception and error logs with stack traces
+
+### Alert Data
+- **Alert Rules** - Alert definitions, thresholds, and evaluation criteria
+- **Alert History** - Historical alert firing and resolution data
+- **Alert States** - Current alert states and evaluation results
+- **Notification Data** - Alert routing and notification delivery status
+
+### Incident Data
+- **Incident Details** - Incident metadata, severity, and status information
+- **Activity Timeline** - Incident response activities and timeline events
+- **Resolution Data** - Incident resolution steps and outcome documentation
+- **Team Coordination** - On-call assignments and escalation history
+
+The Grafana integration provides comprehensive monitoring and observability capabilities, enabling your team to analyze dashboards, query multiple datasources, and manage incidents efficiently through AI-powered assistance while maintaining strict operational controls.
+
+---
+
+*For additional help with Grafana integration, contact our support team at support@getcalmo.com.*
